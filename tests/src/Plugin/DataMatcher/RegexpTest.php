@@ -2,24 +2,24 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Tests\RegexpMatcherTest.
+ * Contains \Drupal\rules\Tests\Plugin\DataMatcher\RegexpTest.
  */
 
-namespace Drupal\rules\Tests\Plugin\Matcher;
+namespace Drupal\rules\Tests\Plugin\DataMatcher;
 
 use Drupal\rules\Tests\RulesUnitTestBase;
-use Drupal\rules\Plugin\Matcher\RegexpMatcher;
+use Drupal\rules\Plugin\DataMatcher\Regexp;
 
 /**
- * @coversDefaultClass \Drupal\rules\Matcher\RegexpMatcher
+ * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\RegexpMatcher
  * @group rules
  */
-class RegexpMatcherTest extends RulesUnitTestBase {
+class RegexpTest extends RulesUnitTestBase {
 
   /**
    * The condition to be tested.
    *
-   * @var \Drupal\rules\Matcher\MatcherInterface
+   * @var \Drupal\rules\Plugin\DataMatcher\MatcherInterface
    */
   protected $matcher;
 
@@ -28,7 +28,7 @@ class RegexpMatcherTest extends RulesUnitTestBase {
    */
   public function setUp() {
     parent::setUp();
-    $this->matcher = new RegexpMatcher();
+    $this->matcher = new Regexp();
   }
 
   /**

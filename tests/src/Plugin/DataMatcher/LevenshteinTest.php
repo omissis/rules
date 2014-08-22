@@ -2,24 +2,24 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Tests\Plugin\Matcher\LevenshteinMatcherTest.
+ * Contains \Drupal\rules\Tests\Plugin\DataMatcher\LevenshteinTest.
  */
 
-namespace Drupal\rules\Tests\Plugin\Matcher;
+namespace Drupal\rules\Tests\Plugin\DataMatcher;
 
 use Drupal\rules\Tests\RulesUnitTestBase;
-use Drupal\rules\Plugin\Matcher\LevenshteinMatcher;
+use Drupal\rules\Plugin\DataMatcher\Levenshtein;
 
 /**
- * @coversDefaultClass \Drupal\rules\Matcher\LevenshteinMatcher
+ * @coversDefaultClass \Drupal\rules\DataMatcher\LevenshteinMatcher
  * @group rules
  */
-class LevenshteinMatcherTest extends RulesUnitTestBase {
+class LevenshteinTest extends RulesUnitTestBase {
   /**
    * @dataProvider matchesProvider
    */
   public function testMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = new LevenshteinMatcher($threshold);
+    $matcher = new Levenshtein($threshold);
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }

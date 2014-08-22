@@ -2,20 +2,22 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\Matcher\TypeMatcher.
+ * Contains \Drupal\rules\Plugin\DataMatcher\Type.
  */
 
-namespace Drupal\rules\Plugin\Matcher;
+namespace Drupal\rules\Plugin\DataMatcher;
+
+use Drupal\rules\Matcher\MatcherInterface;
 
 /**
  * Defines a type matcher.
  *
  * @RulesDataMatcher(
- *   id = "rules_matcher_type",
+ *   id = "rules_datamatcher_type",
  *   label = @Translation("A type matcher.")
  * )
  */
-class TypeMatcher implements MatcherInterface {
+class Type implements MatcherInterface {
 
   public function match($subject, $object) {
     if ($object === gettype($subject)) {

@@ -2,24 +2,24 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Tests\StringEqualityMatcherTest.
+ * Contains \Drupal\rules\Tests\Plugin\DataMatcher\StringEqualsTest.
  */
 
-namespace Drupal\rules\Tests\Plugin\Matcher;
+namespace Drupal\rules\Tests\Plugin\DataMatcher;
 
 use Drupal\rules\Tests\RulesUnitTestBase;
-use Drupal\rules\Plugin\Matcher\StringEqualsMatcher;
+use Drupal\rules\Plugin\DataMatcher\StringEquals;
 
 /**
- * @coversDefaultClass \Drupal\rules\Matcher\StringEqualsMatcher
+ * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\StringEquals
  * @group rules
  */
-class StringEqualsMatcherTest extends RulesUnitTestBase {
+class StringEqualsTest extends RulesUnitTestBase {
   /**
    * @dataProvider matchesProvider
    */
   public function testMatch($expectedMatchResult, $trim, $case_sensitive, $subject, $object) {
-    $matcher = new StringEqualsMatcher($case_sensitive, $trim);
+    $matcher = new StringEquals($case_sensitive, $trim);
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }

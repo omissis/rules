@@ -2,24 +2,24 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Tests\TypeMatcherTest.
+ * Contains \Drupal\rules\Tests\Plugin\DataMatcher\TypeTest.
  */
 
-namespace Drupal\rules\Tests\Plugin\Matcher;
+namespace Drupal\rules\Tests\Plugin\DataMatcher;
 
 use Drupal\rules\Tests\RulesUnitTestBase;
-use Drupal\rules\Plugin\Matcher\TypeMatcher;
+use Drupal\rules\Plugin\DataMatcher\Type;
 
 /**
- * @coversDefaultClass \Drupal\rules\Matcher\TypeMatcher
+ * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\Type
  * @group rules
  */
-class TypeMatcherTest extends RulesUnitTestBase {
+class TypeTest extends RulesUnitTestBase {
 
   /**
    * The condition to be tested.
    *
-   * @var \Drupal\rules\Matcher\MatcherInterface
+   * @var \Drupal\rules\Plugin\DataMatcher\MatcherInterface
    */
   protected $matcher;
 
@@ -28,7 +28,7 @@ class TypeMatcherTest extends RulesUnitTestBase {
    */
   public function setUp() {
     parent::setUp();
-    $this->matcher = new TypeMatcher();
+    $this->matcher = new Type();
   }
 
   /**

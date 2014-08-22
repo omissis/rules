@@ -2,24 +2,24 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Tests\StringContainsMatcherTest.
+ * Contains \Drupal\rules\Tests\Plugin\DataMatcher\StringContainsTest.
  */
 
-namespace Drupal\rules\Tests\Plugin\Matcher;
+namespace Drupal\rules\Tests\Plugin\DataMatcher;
 
 use Drupal\rules\Tests\RulesUnitTestBase;
-use Drupal\rules\Plugin\Matcher\StringContainsMatcher;
+use Drupal\rules\Plugin\DataMatcher\StringContains;
 
 /**
- * @coversDefaultClass \Drupal\rules\Matcher\StringContainsMatcher
+ * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\StringContains
  * @group rules
  */
-class StringContainsMatcherTest extends RulesUnitTestBase {
+class StringContainsTest extends RulesUnitTestBase {
   /**
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new StringContainsMatcher();
+    $matcher = new StringContains();
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }
 
@@ -27,7 +27,7 @@ class StringContainsMatcherTest extends RulesUnitTestBase {
    * @dataProvider caseInsensitiveMatchesProvider
    */
   public function testCaseInsensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new StringContainsMatcher(0, FALSE);
+    $matcher = new StringContains(FALSE, 0);
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }
 
