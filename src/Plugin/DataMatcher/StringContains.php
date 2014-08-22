@@ -7,8 +7,6 @@
 
 namespace Drupal\rules\Plugin\DataMatcher;
 
-use Drupal\rules\Matcher\MatcherInterface;
-
 /**
  * Defines a 'string contains' matcher.
  *
@@ -17,7 +15,7 @@ use Drupal\rules\Matcher\MatcherInterface;
  *   label = @Translation("A 'string contains' matcher.")
  * )
  */
-class StringContains implements MatcherInterface {
+class StringContains extends DataMatcherBase {
   private $case_sensitive;
   private $offset;
 
@@ -34,20 +32,12 @@ class StringContains implements MatcherInterface {
     $this->offset = $offset;
   }
 
-  public function match($subject, $object) {
-    if (!is_string($subject)) {
-      throw new \InvalidArgumentException('$subject must be a string');
-    }
-
-    if (!is_string($object)) {
-      throw new \InvalidArgumentException('$object must be a string');
-    }
-
+  public function doMatch($subject, $object) {
     if (FALSE === $this->case_sensitive) {
       $subject = strtolower($subject);
       $object = strtolower($object);
     }
 
-    return false !== strpos($subject, $object, 0);
+    return false !== strpos($subject, $object, $this->offset);
   }
 }

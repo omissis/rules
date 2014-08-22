@@ -7,8 +7,6 @@
 
 namespace Drupal\rules\Plugin\DataMatcher;
 
-use Drupal\rules\Matcher\MatcherInterface;
-
 /**
  * Defines a levenshtein distance matcher.
  *
@@ -17,24 +15,23 @@ use Drupal\rules\Matcher\MatcherInterface;
  *   label = @Translation("A Levenshtein distance matcher.")
  * )
  */
-class Levenshtein implements MatcherInterface {
+class Levenshtein extends DataMatcherBase {
+  private $case_sensitive;
   private $threshold;
 
-  public function __construct($threshold = 1) {
+  public function __construct($case_sensitive = TRUE, $threshold = 1) {
     if (!is_int($threshold)) {
       throw new \InvalidArgumentException('$offset must be an integer value');
     }
 
+    $this->case_sensitive = $case_sensitive;
     $this->threshold = $threshold;
   }
 
-  public function match($subject, $object) {
-    if (!is_string($subject)) {
-      throw new \InvalidArgumentException('$subject must be a string');
-    }
-
-    if (!is_string($object)) {
-      throw new \InvalidArgumentException('$object must be a string');
+  protected function doMatch($subject, $object) {
+    if (!$this->case_sensitive) {
+      $subject = strtolower($subject);
+      $object = strtolower($object);
     }
 
     return $this->threshold >= levenshtein($subject, $object);

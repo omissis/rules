@@ -7,8 +7,6 @@
 
 namespace Drupal\rules\Plugin\DataMatcher;
 
-use Drupal\rules\Matcher\MatcherInterface;
-
 /**
  * Defines a strings equality matcher.
  *
@@ -17,7 +15,7 @@ use Drupal\rules\Matcher\MatcherInterface;
  *   label = @Translation("A string equality matcher.")
  * )
  */
-class StringEquals implements MatcherInterface {
+class StringEquals extends DataMatcherBase {
   private $case_sensitive;
   private $trim;
 
@@ -34,13 +32,13 @@ class StringEquals implements MatcherInterface {
     $this->trim = $trim;
   }
 
-  public function match($subject, $object) {
+  public function doMatch($subject, $object) {
     if ($this->trim) {
       $subject = trim($subject);
       $object = trim($object);
     }
 
-    if (!$this->case_sensitive) {
+    if (FALSE === $this->case_sensitive) {
       $subject = strtolower($subject);
       $object = strtolower($object);
     }

@@ -7,8 +7,6 @@
 
 namespace Drupal\rules\Plugin\DataMatcher;
 
-use Drupal\rules\Matcher\MatcherInterface;
-
 /**
  * Defines a type matcher.
  *
@@ -17,9 +15,15 @@ use Drupal\rules\Matcher\MatcherInterface;
  *   label = @Translation("A type matcher.")
  * )
  */
-class Type implements MatcherInterface {
+class Type extends DataMatcherBase {
 
   public function match($subject, $object) {
+    $this->validateMatchArgument('object', $object, 'string');
+
+    return $this->doMatch($subject, $object);
+  }
+
+  public function doMatch($subject, $object) {
     if ($object === gettype($subject)) {
       return TRUE;
     }

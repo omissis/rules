@@ -7,8 +7,6 @@
 
 namespace Drupal\rules\Plugin\DataMatcher;
 
-use Drupal\rules\Matcher\MatcherInterface;
-
 /**
  * Defines a string regular expression matcher.
  *
@@ -17,7 +15,7 @@ use Drupal\rules\Matcher\MatcherInterface;
  *   label = @Translation("A regular expression matcher.")
  * )
  */
-class Regexp implements MatcherInterface {
+class Regexp extends DataMatcherBase {
   private $flags;
   private $offset;
 
@@ -34,15 +32,7 @@ class Regexp implements MatcherInterface {
     $this->offset = $offset;
   }
 
-  public function match($subject, $object) {
-    if (!is_string($subject)) {
-      throw new \InvalidArgumentException('$subject must be a string');
-    }
-
-    if (!is_string($object)) {
-      throw new \InvalidArgumentException('$object must be a string');
-    }
-
+  public function doMatch($subject, $object) {
     $matches = array();
 
     return 1 === preg_match($object, $subject, $matches, $this->flags, $this->offset);
