@@ -5,9 +5,10 @@
  * Contains \Drupal\rules\Tests\TypeMatcherTest.
  */
 
-namespace Drupal\rules\Tests;
+namespace Drupal\rules\Tests\Plugin\Matcher;
 
-use Drupal\rules\Matcher\TypeMatcher;
+use Drupal\rules\Tests\RulesUnitTestBase;
+use Drupal\rules\Plugin\Matcher\TypeMatcher;
 
 /**
  * @coversDefaultClass \Drupal\rules\Matcher\TypeMatcher

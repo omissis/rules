@@ -5,9 +5,10 @@
  * Contains \Drupal\rules\Tests\RegexpMatcherTest.
  */
 
-namespace Drupal\rules\Tests;
+namespace Drupal\rules\Tests\Plugin\Matcher;
 
-use Drupal\rules\Matcher\RegexpMatcher;
+use Drupal\rules\Tests\RulesUnitTestBase;
+use Drupal\rules\Plugin\Matcher\RegexpMatcher;
 
 /**
  * @coversDefaultClass \Drupal\rules\Matcher\RegexpMatcher

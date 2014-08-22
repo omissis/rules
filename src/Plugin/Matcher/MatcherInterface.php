@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Matcher\MatcherInterface.
+ * Contains \Drupal\rules\Plugin\Matcher\MatcherInterface.
  */
 
-namespace Drupal\rules\Matcher;
+namespace Drupal\rules\Plugin\Matcher;
 
 interface MatcherInterface {
     public function match($subject, $object);

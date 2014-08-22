@@ -2,11 +2,19 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Matcher\RegexpMatcher.
+ * Contains \Drupal\rules\Plugin\Matcher\RegexpMatcher.
  */
 
-namespace Drupal\rules\Matcher;
+namespace Drupal\rules\Plugin\Matcher;
 
+/**
+ * Defines a string regular expression matcher.
+ *
+ * @RulesDataMatcher(
+ *   id = "rules_matcher_regexp",
+ *   label = @Translation("A regular expression matcher.")
+ * )
+ */
 class RegexpMatcher implements MatcherInterface {
     private $flags;
     private $offset;

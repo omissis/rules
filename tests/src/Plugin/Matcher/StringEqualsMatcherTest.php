@@ -5,9 +5,10 @@
  * Contains \Drupal\rules\Tests\StringEqualityMatcherTest.
  */
 
-namespace Drupal\rules\Tests;
+namespace Drupal\rules\Tests\Plugin\Matcher;
 
-use Drupal\rules\Matcher\StringEqualsMatcher;
+use Drupal\rules\Tests\RulesUnitTestBase;
+use Drupal\rules\Plugin\Matcher\StringEqualsMatcher;
 
 /**
  * @coversDefaultClass \Drupal\rules\Matcher\StringEqualsMatcher

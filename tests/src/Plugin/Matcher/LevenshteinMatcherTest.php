@@ -2,12 +2,13 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Tests\LevenshteinMatcherTest.
+ * Contains \Drupal\rules\Tests\Plugin\Matcher\LevenshteinMatcherTest.
  */
 
-namespace Drupal\rules\Tests;
+namespace Drupal\rules\Tests\Plugin\Matcher;
 
-use Drupal\rules\Matcher\LevenshteinMatcher;
+use Drupal\rules\Tests\RulesUnitTestBase;
+use Drupal\rules\Plugin\Matcher\LevenshteinMatcher;
 
 /**
  * @coversDefaultClass \Drupal\rules\Matcher\LevenshteinMatcher

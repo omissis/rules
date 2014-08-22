@@ -2,11 +2,19 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Matcher\TypeMatcher.
+ * Contains \Drupal\rules\Plugin\Matcher\TypeMatcher.
  */
 
-namespace Drupal\rules\Matcher;
+namespace Drupal\rules\Plugin\Matcher;
 
+/**
+ * Defines a 'string contains' matcher.
+ *
+ * @RulesDataMatcher(
+ *   id = "rules_matcher_string_contains",
+ *   label = @Translation("A 'string contains' matcher.")
+ * )
+ */
 class StringContainsMatcher implements MatcherInterface {
     private $offset;
     private $case_sensitive;

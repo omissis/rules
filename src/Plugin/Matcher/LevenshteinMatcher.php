@@ -2,11 +2,19 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Matcher\LevenshteinMatcher.
+ * Contains \Drupal\rules\Plugin\Matcher\LevenshteinMatcher.
  */
 
-namespace Drupal\rules\Matcher;
+namespace Drupal\rules\Plugin\Matcher;
 
+/**
+ * Defines a levenshtein distance matcher.
+ *
+ * @RulesDataMatcher(
+ *   id = "rules_matcher_levenshtein",
+ *   label = @Translation("A Levenshtein distance matcher.")
+ * )
+ */
 class LevenshteinMatcher implements MatcherInterface {
     private $threshold;
 

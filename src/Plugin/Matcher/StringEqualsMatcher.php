@@ -2,11 +2,19 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Matcher\StringEqualsMatcher.
+ * Contains \Drupal\rules\Plugin\Matcher\StringEqualsMatcher.
  */
 
-namespace Drupal\rules\Matcher;
+namespace Drupal\rules\Plugin\Matcher;
 
+/**
+ * Defines a strings equality matcher.
+ *
+ * @RulesDataMatcher(
+ *   id = "rules_matcher_string_equals",
+ *   label = @Translation("A string equality matcher.")
+ * )
+ */
 class StringEqualsMatcher implements MatcherInterface {
     private $trim;
     private $case_sensitive;

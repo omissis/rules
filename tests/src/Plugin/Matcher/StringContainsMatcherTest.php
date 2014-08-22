@@ -5,9 +5,10 @@
  * Contains \Drupal\rules\Tests\StringContainsMatcherTest.
  */
 
-namespace Drupal\rules\Tests;
+namespace Drupal\rules\Tests\Plugin\Matcher;
 
-use Drupal\rules\Matcher\StringContainsMatcher;
+use Drupal\rules\Tests\RulesUnitTestBase;
+use Drupal\rules\Plugin\Matcher\StringContainsMatcher;
 
 /**
  * @coversDefaultClass \Drupal\rules\Matcher\StringContainsMatcher
