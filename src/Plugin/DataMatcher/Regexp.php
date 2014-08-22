@@ -20,13 +20,8 @@ class Regexp extends DataMatcherBase {
   private $offset;
 
   public function __construct($flags = 0, $offset = 0) {
-    if (!is_int($flags)) {
-      throw new \InvalidArgumentException('$flags must be an integer value');
-    }
-
-    if (!is_int($offset)) {
-      throw new \InvalidArgumentException('$offset must be an integer value');
-    }
+    $this->validateArgumentType('flags', $flags, 'integer');
+    $this->validateArgumentType('offset', $offset, 'integer');
 
     $this->flags = $flags;
     $this->offset = $offset;

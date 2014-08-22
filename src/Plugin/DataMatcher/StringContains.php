@@ -20,13 +20,8 @@ class StringContains extends DataMatcherBase {
   private $offset;
 
   public function __construct($case_sensitive = TRUE, $offset = 0) {
-    if (!is_bool($case_sensitive)) {
-      throw new \InvalidArgumentException('$case_sensitive must be a boolean value');
-    }
-
-    if (!is_int($offset)) {
-      throw new \InvalidArgumentException('$offset must be an integer value');
-    }
+    $this->validateArgumentType('case_sensitive', $case_sensitive, 'boolean');
+    $this->validateArgumentType('offset', $offset, 'integer');
 
     $this->case_sensitive = $case_sensitive;
     $this->offset = $offset;

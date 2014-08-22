@@ -20,13 +20,8 @@ class StringEquals extends DataMatcherBase {
   private $trim;
 
   public function __construct($case_sensitive = FALSE, $trim = FALSE) {
-    if (!is_bool($case_sensitive)) {
-      throw new \InvalidArgumentException('$case_sensitive must be a boolean value');
-    }
-
-    if (!is_bool($trim)) {
-      throw new \InvalidArgumentException('$trim must be a boolean value');
-    }
+    $this->validateArgumentType('case_sensitive', $case_sensitive, 'boolean');
+    $this->validateArgumentType('trim', $trim, 'boolean');
 
     $this->case_sensitive = $case_sensitive;
     $this->trim = $trim;

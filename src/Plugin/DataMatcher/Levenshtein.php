@@ -20,9 +20,8 @@ class Levenshtein extends DataMatcherBase {
   private $threshold;
 
   public function __construct($case_sensitive = TRUE, $threshold = 1) {
-    if (!is_int($threshold)) {
-      throw new \InvalidArgumentException('$offset must be an integer value');
-    }
+    $this->validateArgumentType('case_sensitive', $case_sensitive, 'boolean');
+    $this->validateArgumentType('threshold', $threshold, 'integer');
 
     $this->case_sensitive = $case_sensitive;
     $this->threshold = $threshold;

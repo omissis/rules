@@ -15,15 +15,15 @@ use Drupal\rules\Matcher\MatcherInterface;
 abstract class DataMatcherBase implements MatcherInterface {
 
   public function match($subject, $object) {
-    $this->validateMatchArgument('subject', $subject, 'string');
-    $this->validateMatchArgument('object', $object, 'string');
+    $this->validateArgumentType('subject', $subject, 'string');
+    $this->validateArgumentType('object', $object, 'string');
 
     return $this->doMatch($subject, $object);
   }
 
   abstract protected function doMatch($subject, $object);
 
-  protected function validateMatchArgument($name, $argument, $type) {
+  protected function validateArgumentType($name, $argument, $type) {
     if ($type !== gettype($argument)) {
       throw new \InvalidArgumentException('Argument "$' . $name . '" must be a ' . $type . '.');
     }

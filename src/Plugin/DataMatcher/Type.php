@@ -18,7 +18,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
 class Type extends DataMatcherBase {
 
   public function match($subject, $object) {
-    $this->validateMatchArgument('object', $object, 'string');
+    $this->validateArgumentType('object', $object, 'string');
 
     return $this->doMatch($subject, $object);
   }
