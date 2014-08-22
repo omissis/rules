@@ -5,3 +5,22 @@ services:
   plugin.manager.rules_data_processor:
     class: Drupal\rules\Plugin\RulesDataProcessorManager
     arguments: ['@container.namespaces', '@module_handler']
+
+  drupal.rules.matcher.levenshtein:
+    class: Drupal\rules\Matcher\LevenshteinMatcher
+  drupal.rules.matcher.regexp:
+    class: Drupal\rules\Matcher\RegexpMatcher
+  drupal.rules.matcher.string_contains.case_sensitive:
+    class: Drupal\rules\Matcher\StringContainsMatcher
+    arguments: [0, true]
+  drupal.rules.matcher.string_contains.case_insensitive:
+    class: Drupal\rules\Matcher\StringContainsMatcher
+    arguments: [0, false]
+  drupal.rules.matcher.string_equals.case_sensitive:
+    class: Drupal\rules\Matcher\StringEqualsMatcher
+    arguments: [true, false]
+  drupal.rules.matcher.string_contains.case_insensitive:
+    class: Drupal\rules\Matcher\StringEqualsMatcher
+    arguments: [false, false]
+  drupal.rules.matcher.type:
+    class: Drupal\rules\Matcher\TypeMatcher
