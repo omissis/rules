@@ -10,6 +10,7 @@ namespace Drupal\rules\Tests\Condition;
 use Drupal\rules\Plugin\Condition\TestMatcher;
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Tests\RulesIntegrationTestBase;
+use Drupal\rules\Plugin\DataMatcher\StringEquals;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\DataComparison
@@ -46,24 +47,87 @@ class TextMatchesTest extends RulesIntegrationTestBase {
    *
    * @dataProvider matchesProvider
    *
-   * @covers ::summary()
+   * @covers ::evaluate()
    */
-  public function testEvaluate($expectedMatchResult, $text, $operator, $value) {
+  public function testEvaluate($expectedMatchResult, $matcherClass, $text, $value) {
+    $dataMatcherManager = $this->getMockBuilder('Drupal\\rules\\Plugin\\RulesDataMatcherPluginManager')
+      ->disableOriginalConstructor()
+      ->getMock();
+
+    $dataMatcherManager
+      ->expects($this->once())
+      ->method('getInstance')
+      ->will($this->returnValue(new $matcherClass()));
+
     $this->condition
+      ->setDataMatcherManager($dataMatcherManager)
       ->setContextValue('text', $text)
-      ->setContextValue('operator', $operator)
+      ->setContextValue('operator', 'foo')
       ->setContextValue('value', $value);
 
     $this->assertSame($expectedMatchResult, $this->condition->evaluate());
   }
 
+
+  /**
+   * Tests the evaluate function when it receives bad values.
+   *
+   * @dataProvider invalidArgumentsMatchesProvider
+   * @expectedException InvalidArgumentException
+   *
+   * @covers ::evaluate()
+   */
+  public function testEvaluateWithErrors($matcherClass, $text, $value) {
+    $dataMatcherManager = $this->getMockBuilder('Drupal\\rules\\Plugin\\RulesDataMatcherPluginManager')
+      ->disableOriginalConstructor()
+      ->getMock();
+
+    $dataMatcherManager
+      ->expects($this->once())
+      ->method('getInstance')
+      ->will($this->returnValue(new $matcherClass()));
+
+    $this->condition
+      ->setDataMatcherManager($dataMatcherManager)
+      ->setContextValue('text', $text)
+      ->setContextValue('operator', 'foo')
+      ->setContextValue('value', $value);
+
+    $this->condition->evaluate();
+  }
+
   public function matchesProvider() {
     return array(
-      array(TRUE, 'foo', null, 'foo'),
-      array(TRUE, '1', null, 1),
+      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\Levenshtein', 'foo', 'foo'),
+      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\Levenshtein', 'foo', 'bar'),
 
-      array(FALSE, 'foo', null, 'bar'),
-      array(FALSE, '1', null, 2),
+      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\Regexp', 'foo', '/^fo/'),
+      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\Regexp', 'foo', '/fu/'),
+
+      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\StringContains', 'foo', 'fo'),
+      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\StringContains', 'foo', 'ba'),
+
+      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\StringEquals', 'foo', 'foo'),
+      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\StringEquals', 'foo', 'bar'),
+
+      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\Type', 'foo', 'string'),
+      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\Type', 'foo', 'boolean'),
+    );
+  }
+
+  public function invalidArgumentsMatchesProvider () {
+    return array(
+      array('Drupal\\rules\\Plugin\\DataMatcher\\Levenshtein', '1', 1),
+      array('Drupal\\rules\\Plugin\\DataMatcher\\Levenshtein', 2, '2'),
+
+      array('Drupal\\rules\\Plugin\\DataMatcher\\Regexp', 1, '1'),
+      array('Drupal\\rules\\Plugin\\DataMatcher\\Regexp', '2', 2),
+
+      array('Drupal\\rules\Plugin\\DataMatcher\\StringContains', 1, '1'),
+      array('Drupal\\rules\\Plugin\\DataMatcher\\StringContains', '2', 2),
+
+      array('Drupal\\rules\\Plugin\\DataMatcher\\StringEquals', 1, '1'),
+      array('Drupal\\rules\\Plugin\\DataMatcher\\StringEquals', '2', 2),
     );
   }
 }

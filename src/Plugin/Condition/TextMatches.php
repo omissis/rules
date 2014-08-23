@@ -8,7 +8,8 @@
 namespace Drupal\rules\Plugin\Condition;
 
 use Drupal\rules\Engine\RulesConditionBase;
-use Drupal\rules\Plugin\Matcher\MatcherInterface;
+use Drupal\rules\Matcher\MatcherInterface;
+use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
 
 /**
  * Provides a 'Text matches' condition.
@@ -37,7 +38,7 @@ use Drupal\rules\Plugin\Matcher\MatcherInterface;
  */
 class TextMatches extends RulesConditionBase {
 
-  const OPERATOR_DEFAULT = 'rules_matcher_string_equals';
+  const OPERATOR_DEFAULT = 'rules_datamatcher_string_equals';
 
   /**
    * The data processor plugin manager used to process context variables.
@@ -68,15 +69,22 @@ class TextMatches extends RulesConditionBase {
    * {@inheritdoc}
    */
   public function evaluate() {
-    $operator = $this->getContext('operator')->getContextData()->getCastedValue() ?: self::OPERATOR_DEFAULT;
+    $contextData = $this->getContext('operator')->getContextData();
 
-    $matcher = $this->matcherManager ? $this->matcherManager->getInstance($operator) : NULL;
+    if (empty($contextData)) {
+      throw new \RuntimeException('Missing "operator" context property.');
+    }
+
+    $operator = $contextData->getCastedValue() ?: self::OPERATOR_DEFAULT;
+
+    //TODO: check what to pass to getInstance()
+    $matcher = $this->dataMatcherManager ? $this->dataMatcherManager->getInstance(['operator' => $operator]) : NULL;
 
     if (!is_object($matcher) || !$matcher instanceof MatcherInterface) {
       throw new \RuntimeException('Matcher is not an instance of MatcherInterface.');
     }
 
-    return $matcher->matches($this->getContextValue('text'), $this->getContextValue('value'));
+    return $matcher->match($this->getContextValue('text'), $this->getContextValue('value'));
   }
 
 }
