@@ -43,7 +43,7 @@ class StringEquals extends DataMatcherBase {
    * {@inheritdoc}
    */
   public function doMatch($subject, $object) {
-    if ($this->trim) {
+    if (TRUE === $this->trim) {
       $subject = trim($subject);
       $object = trim($object);
     }

@@ -43,7 +43,7 @@ class Levenshtein extends DataMatcherBase {
    * {@inheritdoc}
    */
   protected function doMatch($subject, $object) {
-    if (!$this->case_sensitive) {
+    if (FALSE === $this->case_sensitive) {
       $subject = strtolower($subject);
       $object = strtolower($object);
     }
