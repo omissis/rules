@@ -17,12 +17,18 @@ namespace Drupal\rules\Plugin\DataMatcher;
  */
 class Type extends DataMatcherBase {
 
+  /**
+   * {@inheritdoc}
+   */
   public function match($subject, $object) {
     $this->validateArgumentType('object', $object, 'string');
 
     return $this->doMatch($subject, $object);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function doMatch($subject, $object) {
     if ($object === gettype($subject)) {
       return TRUE;

@@ -16,7 +16,15 @@ namespace Drupal\rules\Plugin\DataMatcher;
  * )
  */
 class StringContains extends DataMatcherBase {
+
+  /**
+   * @var boolean
+   */
   private $case_sensitive;
+
+  /**
+   * @var int
+   */
   private $offset;
 
   public function __construct($case_sensitive = TRUE, $offset = 0) {
@@ -27,6 +35,9 @@ class StringContains extends DataMatcherBase {
     $this->offset = $offset;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function doMatch($subject, $object) {
     if (FALSE === $this->case_sensitive) {
       $subject = strtolower($subject);

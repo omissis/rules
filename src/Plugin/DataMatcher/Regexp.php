@@ -16,9 +16,21 @@ namespace Drupal\rules\Plugin\DataMatcher;
  * )
  */
 class Regexp extends DataMatcherBase {
+
+  /**
+   * @var int
+   */
   private $flags;
+
+  /**
+   * @var int
+   */
   private $offset;
 
+  /**
+   * @param int $flags
+   * @param int $offset
+   */
   public function __construct($flags = 0, $offset = 0) {
     $this->validateArgumentType('flags', $flags, 'integer');
     $this->validateArgumentType('offset', $offset, 'integer');
@@ -27,6 +39,9 @@ class Regexp extends DataMatcherBase {
     $this->offset = $offset;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function doMatch($subject, $object) {
     $matches = array();
 

@@ -16,9 +16,21 @@ namespace Drupal\rules\Plugin\DataMatcher;
  * )
  */
 class StringEquals extends DataMatcherBase {
+
+  /**
+   * @var boolean
+   */
   private $case_sensitive;
+
+  /**
+   * @var boolean
+   */
   private $trim;
 
+  /**
+   * @param boolean $case_sensitive
+   * @param boolean $trim
+   */
   public function __construct($case_sensitive = FALSE, $trim = FALSE) {
     $this->validateArgumentType('case_sensitive', $case_sensitive, 'boolean');
     $this->validateArgumentType('trim', $trim, 'boolean');
@@ -27,6 +39,9 @@ class StringEquals extends DataMatcherBase {
     $this->trim = $trim;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function doMatch($subject, $object) {
     if ($this->trim) {
       $subject = trim($subject);
