@@ -29,7 +29,7 @@ class Type extends DataMatcherBase {
   /**
    * {@inheritdoc}
    */
-  public function doMatch($subject, $object) {
+  protected function doMatch($subject, $object) {
     if ($object === gettype($subject)) {
       return TRUE;
     }

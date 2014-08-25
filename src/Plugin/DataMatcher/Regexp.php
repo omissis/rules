@@ -42,7 +42,7 @@ class Regexp extends DataMatcherBase {
   /**
    * {@inheritdoc}
    */
-  public function doMatch($subject, $object) {
+  protected function doMatch($subject, $object) {
     $matches = array();
 
     return 1 === preg_match($object, $subject, $matches, $this->flags, $this->offset);

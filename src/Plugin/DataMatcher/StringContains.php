@@ -38,7 +38,7 @@ class StringContains extends DataMatcherBase {
   /**
    * {@inheritdoc}
    */
-  public function doMatch($subject, $object) {
+  protected function doMatch($subject, $object) {
     if (FALSE === $this->case_sensitive) {
       $subject = strtolower($subject);
       $object = strtolower($object);
