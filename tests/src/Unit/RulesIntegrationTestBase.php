@@ -16,6 +16,7 @@ use Drupal\Core\TypedData\Plugin\DataType\Any;
 use Drupal\Core\TypedData\TypedDataManager;
 use Drupal\rules\Plugin\RulesDataProcessorManager;
 use Drupal\rules\Plugin\RulesExpressionPluginManager;
+use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
 use Drupal\Tests\UnitTestCase;
 use Symfony\Component\DependencyInjection\Definition;
 
@@ -88,11 +89,13 @@ abstract class RulesIntegrationTestBase extends RulesUnitTestBase {
     $this->rulesExpressionManager = new RulesExpressionPluginManager($namespaces, $module_handler);
     $this->typedDataManager = new TypedDataManager($namespaces, $cache_backend, $module_handler);
     $this->rulesDataProcessorManager = new RulesDataProcessorManager($namespaces, $module_handler);
+    $this->rulesDataMatcherManager = new RulesDataMatcherPluginManager($namespaces, $module_handler);
 
     $container->set('plugin.manager.action', $this->actionManager);
     $container->set('plugin.manager.condition', $this->conditionManager);
     $container->set('plugin.manager.rules_expression', $this->rulesExpressionManager);
     $container->set('plugin.manager.rules_data_processor', $this->rulesExpressionManager);
+    $container->set('plugin.manager.rules_data_matcher', $this->rulesDataMatcherManager);
     $container->set('typed_data_manager', $this->typedDataManager);
     $container->set('string_translation', $this->getStringTranslationStub());
 
