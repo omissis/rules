@@ -51,7 +51,6 @@ class TextMatchesTest extends RulesIntegrationTestBase {
    */
   public function testEvaluate($expectedMatchResult, $operator, $subject, $object) {
     $this->condition
-      ->setDataMatcherManager($this->rulesDataMatcherManager)
       ->setContextValue('data', $subject)
       ->setContextValue('operator', $operator)
       ->setContextValue('value', $object);

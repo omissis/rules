@@ -7,6 +7,8 @@
 
 namespace Drupal\rules\Plugin\Condition;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\rules\Engine\RulesConditionBase;
 use Drupal\rules\Matcher\MatcherInterface;
 use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
@@ -36,7 +38,7 @@ use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
  *
  * @todo: DataMatcherPluginManager should be constructor-injected as it's a mandatory dependency.
  */
-class TextMatches extends RulesConditionBase {
+class TextMatches extends RulesConditionBase implements ContainerFactoryPluginInterface {
 
   /**
    * The data processor plugin manager used to process context variables.
@@ -45,15 +47,34 @@ class TextMatches extends RulesConditionBase {
    */
   protected $dataMatcherManager;
 
-  /**
-   * @param RulesDataMatcherPluginManager $dataMatcherManager
-   *
-   * @return TextMatches
-   */
-  public function setDataMatcherManager(RulesDataMatcherPluginManager $dataMatcherManager) {
-    $this->dataMatcherManager = $dataMatcherManager;
 
-    return $this;
+  /**
+   * Constructs a PathHasAlias object.
+   *
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin ID for the plugin instance.
+   * @param mixed $plugin_definition
+   *   The plugin implementation definition.
+   * @param \Drupal\rules\Plugin\RulesDataMatcherPluginManager $data_matcher_manager
+   *   The alias manager service.
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, RulesDataMatcherPluginManager $data_matcher_manager) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->dataMatcherManager = $data_matcher_manager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('plugin.manager.rules_data_matcher')
+    );
   }
 
   /**
