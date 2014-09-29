@@ -19,7 +19,7 @@ class StringEqualsTest extends RulesUnitTestBase {
    * @dataProvider matchesProvider
    */
   public function testMatch($expectedMatchResult, $trim, $case_sensitive, $subject, $object) {
-    $matcher = new StringEquals([], 'rules_datamatcher_string_equals', []);
+    $matcher = new StringEquals([], 'foo_bar', []);
 
     $matcher->setCaseSensitive($case_sensitive);
     $matcher->setTrimmed($trim);

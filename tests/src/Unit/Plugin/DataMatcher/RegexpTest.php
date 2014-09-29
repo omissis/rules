@@ -28,7 +28,7 @@ class RegexpTest extends RulesUnitTestBase {
    */
   public function setUp() {
     parent::setUp();
-    $this->matcher = new Regexp([], 'rules_datamatcher_regexp', []);
+    $this->matcher = new Regexp([], 'foo_bar', []);
   }
 
   /**
