@@ -12,7 +12,8 @@ use Drupal\Component\Annotation\Plugin;
 /**
  * Defines the RulesDataMatcher annotation class.
  *
- * This annotation is used to identify plugins that want to perform a match test against two values.
+ * This annotation is used to identify plugins that want to perform a match test
+ * against two values.
  *
  * @Annotation
  */
@@ -33,5 +34,19 @@ class RulesDataMatcher extends Plugin {
    * @var \Drupal\Core\Annotation\Translation
    */
   public $label;
+
+  /**
+   * Define the type of the subject.
+   *
+   * @var string
+   */
+  public $subject_type;
+
+  /**
+   * Define the type of the object.
+   *
+   * @var string
+   */
+  public $object_type;
 
 }

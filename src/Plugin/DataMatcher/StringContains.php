@@ -12,7 +12,9 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *
  * @RulesDataMatcher(
  *   id = "rules_datamatcher_string_contains",
- *   label = @Translation("A 'string contains' matcher.")
+ *   label = @Translation("A 'string contains' matcher."),
+ *   subject_type = "string",
+ *   object_type = "string"
  * )
  */
 class StringContains extends DataMatcherBase {

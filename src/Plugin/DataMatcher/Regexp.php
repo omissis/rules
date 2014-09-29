@@ -12,7 +12,9 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *
  * @RulesDataMatcher(
  *   id = "rules_datamatcher_regexp",
- *   label = @Translation("A regular expression matcher.")
+ *   label = @Translation("A regular expression matcher."),
+ *   subject_type = "string",
+ *   object_type = "string"
  * )
  */
 class Regexp extends DataMatcherBase {

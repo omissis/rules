@@ -12,7 +12,9 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *
  * @RulesDataMatcher(
  *   id = "rules_datamatcher_levenshtein",
- *   label = @Translation("A Levenshtein distance matcher.")
+ *   label = @Translation("A Levenshtein distance matcher."),
+ *   subject_type = "string",
+ *   object_type = "string"
  * )
  */
 class Levenshtein extends DataMatcherBase {

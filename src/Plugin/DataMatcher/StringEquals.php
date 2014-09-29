@@ -12,7 +12,9 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *
  * @RulesDataMatcher(
  *   id = "rules_datamatcher_string_equals",
- *   label = @Translation("A string equality matcher.")
+ *   label = @Translation("A string equality matcher."),
+ *   subject_type = "string",
+ *   object_type = "string"
  * )
  */
 class StringEquals extends DataMatcherBase {

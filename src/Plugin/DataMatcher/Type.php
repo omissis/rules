@@ -12,7 +12,9 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *
  * @RulesDataMatcher(
  *   id = "rules_datamatcher_type",
- *   label = @Translation("A type matcher.")
+ *   label = @Translation("A type matcher."),
+ *   subject_type = "string",
+ *   object_type = "string"
  * )
  */
 class Type extends DataMatcherBase {
