@@ -1,0 +1,30 @@
+# Schema for the configuration files of the Rules module.
+
+rules.component.*:
+  type: config_entity
+  label: 'Rule'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    module:
+      type: string
+      label: 'Module'
+    description:
+      type: text
+      label: 'Administrative description'
+    tag:
+      type: string
+      label: 'Tag'
+    core:
+      type: string
+      label: 'Drupal version'
+    expression_id:
+      type: string
+      label: 'Rules expression plugin ID'
+    configuration:
+      type: mapping
+      label: 'Rules expression configuration'

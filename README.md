@@ -6,14 +6,15 @@ The Rules module allows site administrators to define conditionally executed
 actions based on occurring events (ECA-rules).
 
 * Project homepage: http://drupal.org/project/rules
+* #d8rules initiative: http://d8rules.org/
 * Documentation: http://thefubhy.gitbooks.io/rules
 
 ## Contributing
 
-For some time development will happen on GitHub and will be using the pull
-request model: in case you are not familiar with that, please take a few minutes
-to read the [GitHub article](https://help.github.com/articles/using-pull-requests)
-about that topic.
+For some time, development will happen on GitHub using the pull request model:
+in case you are not familiar with that, please take a few minutes to read the
+[GitHub article](https://help.github.com/articles/using-pull-requests) on using
+pull requests.
 
 There are a few conventions that should be followed when contributing:
 
@@ -41,9 +42,13 @@ installation and a checkout of the Rules module in the modules folder.
     cd /path/to/drupal-8/core
     ./vendor/bin/phpunit ../modules/rules
 
-#### Simpletest using Drush
+#### Simpletest
 
-    drush test-run 'Rules, Rules conditions'
+    php ./core/scripts/run-tests.sh --verbose --color "rules"
+
+Example for executing one single test file during development:
+
+    php ./core/scripts/run-tests.sh --verbose --color --class "Drupal\rules\Tests\RulesEngineTest"
 
 You can also execute the test cases from the web interface at
 ``/admin/config/development/testing``.
