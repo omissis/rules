@@ -9,25 +9,25 @@ namespace Drupal\rules\Plugin\DataMatcher;
 
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\rules\Matcher\MatcherInterface;
-use Drupal\rules\Inflector\InflectorInterface;
-use Drupal\rules\Plugin\DataInflector\Lowercase;
-use Drupal\rules\Plugin\DataInflector\Trim;
+use Drupal\rules\Engine\RulesDataProcessorInterface;
+use Drupal\rules\Plugin\RulesDataProcessor\Lowercase;
+use Drupal\rules\Plugin\RulesDataProcessor\Trim;
 
 /**
  * Base class for rules conditions.
  */
 abstract class DataMatcherBase extends PluginBase implements MatcherInterface {
 
-  protected $subjectInflectors = array();
-  protected $objectInflectors = array();
+  protected $subjectProcessors = array();
+  protected $objectProcessors = array();
 
   /**
    * {@inheritdoc}
    */
   public function match($subject, $object) {
     return $this->doMatch(
-      $this->inflect($subject, $this->subjectInflectors),
-      $this->inflect($object, $this->objectInflectors)
+      $this->process($subject, $this->subjectProcessors),
+      $this->process($object, $this->objectProcessors)
     );
   }
 
@@ -44,10 +44,10 @@ abstract class DataMatcherBase extends PluginBase implements MatcherInterface {
       return;
     }
 
-    $inflector = new Lowercase([], 'rules_data_inflector_lowercase', []);
+    $processor = new Lowercase([], 'rules_data_processor_lowercase', []);
 
-    $this->addSubjectInflector($inflector);
-    $this->addObjectInflector($inflector);
+    $this->addSubjectProcessor($processor);
+    $this->addObjectProcessor($processor);
   }
 
   /**
@@ -63,26 +63,26 @@ abstract class DataMatcherBase extends PluginBase implements MatcherInterface {
       return;
     }
 
-    $inflector = new Trim([], 'rules_data_inflector_trim', []);
+    $processor = new Trim([], 'rules_data_processor_trim', []);
 
-    $this->addSubjectInflector($inflector);
-    $this->addObjectInflector($inflector);
+    $this->addSubjectProcessor($processor);
+    $this->addObjectProcessor($processor);
   }
 
-  protected function inflect($value, array $inflectors = array()) {
-    array_walk($inflectors, function ($inflector) use (&$value) {
-      $value = $inflector->inflect($value);
+  protected function process($value, array $processors = array()) {
+    array_walk($processors, function ($processor) use (&$value) {
+      $value = $processor->process($value);
     });
 
     return $value;
   }
 
-  protected function addSubjectInflector(InflectorInterface $inflector) {
-    $this->subjectInflectors[] = $inflector;
+  protected function addSubjectProcessor(RulesDataProcessorInterface $processor) {
+    $this->subjectProcessors[] = $processor;
   }
 
-  protected function addObjectInflector(InflectorInterface $inflector) {
-    $this->objectInflectors[] = $inflector;
+  protected function addObjectProcessor(RulesDataProcessorInterface $processor) {
+    $this->objectProcessors[] = $processor;
   }
 
   /**

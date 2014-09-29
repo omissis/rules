@@ -2,16 +2,16 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\DataInflector\LowercaseTest.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataProcessor\LowercaseTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\DataInflector;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataProcessor;
 
 use Drupal\Tests\rules\Unit\RulesUnitTestBase;
-use Drupal\rules\Plugin\DataInflector\Lowercase;
+use Drupal\rules\Plugin\RulesDataProcessor\Lowercase;
 
 /**
- * @coversDefaultClass \Drupal\rules\DataInflector\Lowercase
+ * @coversDefaultClass \Drupal\rules\RulesDataProcessor\Lowercase
  * @group rules
  */
 class LowercaseTest extends RulesUnitTestBase {
@@ -19,9 +19,9 @@ class LowercaseTest extends RulesUnitTestBase {
    * @dataProvider stringsProvider
    */
   public function testTrim($expectedMatchResult, $string) {
-    $inflector = new Lowercase([], 'rules_data_inflector_lowercase', []);
+    $processor = new Lowercase([], 'rules_data_processor_lowercase', []);
 
-    $this->assertSame($expectedMatchResult, $inflector->inflect($string));
+    $this->assertSame($expectedMatchResult, $processor->process($string));
   }
 
   public function stringsProvider() {
