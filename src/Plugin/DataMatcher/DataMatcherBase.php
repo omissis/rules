@@ -17,7 +17,7 @@ use Drupal\rules\Engine\RulesDataProcessorInterface;
 /**
  * Base class for rules conditions.
  */
-abstract class DataMatcherBase extends PluginBase  implements ContainerFactoryPluginInterface, MatcherInterface {
+abstract class DataMatcherBase extends PluginBase implements ContainerFactoryPluginInterface, MatcherInterface {
 
   protected $subjectProcessors = array();
   protected $objectProcessors = array();
