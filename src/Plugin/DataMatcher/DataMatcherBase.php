@@ -7,12 +7,13 @@
 
 namespace Drupal\rules\Plugin\DataMatcher;
 
+use Drupal\Core\Plugin\PluginBase;
 use Drupal\rules\Matcher\MatcherInterface;
 
 /**
  * Base class for rules conditions.
  */
-abstract class DataMatcherBase implements MatcherInterface {
+abstract class DataMatcherBase extends PluginBase implements MatcherInterface {
 
   /**
    * {@inheritdoc}
