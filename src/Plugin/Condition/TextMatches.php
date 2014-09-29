@@ -18,9 +18,9 @@ use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
  *   id = "rules_text_matches",
  *   label = @Translation("Data comparison"),
  *   context = {
- *     "text" = @ContextDefinition("any",
- *       label = @Translation("Data to compare"),
- *       description = @Translation("The text to be matched against a rule, specified by using a ???.")
+ *     "data" = @ContextDefinition("any",
+ *       label = @Translation("Value to compare"),
+ *       description = @Translation("The text to be matched against a rule, specified by using a data selector, e.g. 'node:uid:entity:name:value'.")
  *     ),
  *     "operator" = @ContextDefinition("string",
  *       label = @Translation("Operator"),
@@ -28,7 +28,7 @@ use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
  *       required = FALSE
  *     ),
  *     "value" = @ContextDefinition("any",
- *        label = @Translation("Data value"),
+ *        label = @Translation("Value compared with the subject"),
  *        description = @Translation("The value to match the data with.")
  *     )
  *   }
@@ -84,7 +84,7 @@ class TextMatches extends RulesConditionBase {
       throw new \RuntimeException('Matcher is not an instance of MatcherInterface.');
     }
 
-    return $matcher->match($this->getContextValue('text'), $this->getContextValue('value'));
+    return $matcher->match($this->getContextValue('data'), $this->getContextValue('value'));
   }
 
 }
