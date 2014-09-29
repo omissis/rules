@@ -49,85 +49,32 @@ class TextMatchesTest extends RulesIntegrationTestBase {
    *
    * @covers ::evaluate()
    */
-  public function testEvaluate($expectedMatchResult, $matcherClass, $subject, $object) {
-    $dataMatcherManager = $this->getMockBuilder('Drupal\\rules\\Plugin\\RulesDataMatcherPluginManager')
-      ->disableOriginalConstructor()
-      ->getMock();
-
-    $dataMatcherManager
-      ->expects($this->once())
-      ->method('getInstance')
-      ->will($this->returnValue(new $matcherClass()));
-
+  public function testEvaluate($expectedMatchResult, $operator, $subject, $object) {
     $this->condition
-      ->setDataMatcherManager($dataMatcherManager)
+      ->setDataMatcherManager($this->rulesDataMatcherManager)
       ->setContextValue('data', $subject)
-      ->setContextValue('operator', 'foo')
+      ->setContextValue('operator', $operator)
       ->setContextValue('value', $object);
 
     $this->assertSame($expectedMatchResult, $this->condition->evaluate());
   }
 
-
-  /**
-   * Tests the evaluate function when it receives bad values.
-   *
-   * @dataProvider invalidArgumentsMatchesProvider
-   * @expectedException InvalidArgumentException
-   *
-   * @covers ::evaluate()
-   */
-  public function testEvaluateWithErrors($matcherClass, $subject, $object) {
-    $dataMatcherManager = $this->getMockBuilder('Drupal\\rules\\Plugin\\RulesDataMatcherPluginManager')
-      ->disableOriginalConstructor()
-      ->getMock();
-
-    $dataMatcherManager
-      ->expects($this->once())
-      ->method('getInstance')
-      ->will($this->returnValue(new $matcherClass()));
-
-    $this->condition
-      ->setDataMatcherManager($dataMatcherManager)
-      ->setContextValue('data', $subject)
-      ->setContextValue('operator', 'foo')
-      ->setContextValue('value', $object);
-
-    $this->condition->evaluate();
-  }
-
   public function matchesProvider() {
     return array(
-      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\Levenshtein', 'foo', 'foo'),
-      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\Levenshtein', 'foo', 'bar'),
+      array(TRUE, 'rules_datamatcher_levenshtein', 'foo', 'foo'),
+      array(FALSE, 'rules_datamatcher_levenshtein', 'foo', 'bar'),
 
-      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\Regexp', 'foo', '/^fo/'),
-      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\Regexp', 'foo', '/fu/'),
+      array(TRUE, 'rules_datamatcher_regexp', 'foo', '/^fo/'),
+      array(FALSE, 'rules_datamatcher_regexp', 'foo', '/fu/'),
 
-      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\StringContains', 'foo', 'fo'),
-      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\StringContains', 'foo', 'ba'),
+      array(TRUE, 'rules_datamatcher_string_contains', 'foo', 'fo'),
+      array(FALSE, 'rules_datamatcher_string_contains', 'foo', 'ba'),
 
-      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\StringEquals', 'foo', 'foo'),
-      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\StringEquals', 'foo', 'bar'),
+      array(TRUE, 'rules_datamatcher_string_equals', 'foo', 'foo'),
+      array(FALSE, 'rules_datamatcher_string_equals', 'foo', 'bar'),
 
-      array(TRUE, 'Drupal\\rules\\Plugin\\DataMatcher\\Type', 'foo', 'string'),
-      array(FALSE, 'Drupal\\rules\\Plugin\\DataMatcher\\Type', 'foo', 'boolean'),
-    );
-  }
-
-  public function invalidArgumentsMatchesProvider () {
-    return array(
-      array('Drupal\\rules\\Plugin\\DataMatcher\\Levenshtein', '1', 1),
-      array('Drupal\\rules\\Plugin\\DataMatcher\\Levenshtein', 2, '2'),
-
-      array('Drupal\\rules\\Plugin\\DataMatcher\\Regexp', 1, '1'),
-      array('Drupal\\rules\\Plugin\\DataMatcher\\Regexp', '2', 2),
-
-      array('Drupal\\rules\Plugin\\DataMatcher\\StringContains', 1, '1'),
-      array('Drupal\\rules\\Plugin\\DataMatcher\\StringContains', '2', 2),
-
-      array('Drupal\\rules\\Plugin\\DataMatcher\\StringEquals', 1, '1'),
-      array('Drupal\\rules\\Plugin\\DataMatcher\\StringEquals', '2', 2),
+      array(TRUE, 'rules_datamatcher_type', 'foo', 'string'),
+      array(FALSE, 'rules_datamatcher_type', 'foo', 'boolean'),
     );
   }
 }

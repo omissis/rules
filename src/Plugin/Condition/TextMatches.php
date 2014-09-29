@@ -38,8 +38,6 @@ use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
  */
 class TextMatches extends RulesConditionBase {
 
-  const OPERATOR_DEFAULT = 'rules_datamatcher_string_equals';
-
   /**
    * The data processor plugin manager used to process context variables.
    *
@@ -75,10 +73,9 @@ class TextMatches extends RulesConditionBase {
       throw new \RuntimeException('Missing "operator" context property.');
     }
 
-    $operator = $contextData->getCastedValue() ?: self::OPERATOR_DEFAULT;
-
-    //TODO: check what to pass to getInstance()
-    $matcher = $this->dataMatcherManager ? $this->dataMatcherManager->getInstance(['operator' => $operator]) : NULL;
+    // The expected result of getCastedValue is the data matcher plugin id, e.g: rules_datamatcher_string_equals.
+    // Throws PluginNotFoundException if it can't find the plugin
+    $matcher = $this->dataMatcherManager->createInstance($contextData->getCastedValue());
 
     if (!is_object($matcher) || !$matcher instanceof MatcherInterface) {
       throw new \RuntimeException('Matcher is not an instance of MatcherInterface.');
