@@ -56,6 +56,11 @@ abstract class RulesIntegrationTestBase extends RulesUnitTestBase {
   protected $rulesDataProcessorManager;
 
   /**
+   * @var \Drupal\rules\Plugin\RulesDataMatcherPluginManager
+   */
+  protected $rulesDataMatcherManager;
+
+  /**
    * {@inheritdoc}
    */
   public function setUp() {
@@ -71,7 +76,7 @@ abstract class RulesIntegrationTestBase extends RulesUnitTestBase {
       ->method('moduleExists')
       ->will($this->returnValueMap([
         [ 'rules', TRUE ],
-        [ 'rules_test', TRUE],
+        [ 'rules_test', TRUE ],
       ]));
 
     $cache_backend = new NullBackend('rules');

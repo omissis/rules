@@ -40,7 +40,6 @@ class TextMatchesTest extends RulesIntegrationTestBase {
    */
   public function testSummary() {
     $this->assertEquals('Text matches', $this->condition->summary());
-    var_dump($this->rulesDataProcessorManager->getDefinitions());exit;
   }
 
   /**

@@ -21,7 +21,7 @@ class RulesDataMatcherPluginManager extends DefaultPluginManager {
   public function __construct(\Traversable $namespaces, ModuleHandlerInterface $module_handler, $plugin_definition_annotation_name = 'Drupal\rules\Annotation\RulesDataMatcher') {
     $this->alterInfo('rules_datamatcher');
 
-    parent::__construct('Plugin/Matcher', $namespaces, $module_handler, NULL, $plugin_definition_annotation_name);
+    parent::__construct('Plugin/DataMatcher', $namespaces, $module_handler, NULL, $plugin_definition_annotation_name);
   }
 
 }

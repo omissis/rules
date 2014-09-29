@@ -19,7 +19,10 @@ class LevenshteinTest extends RulesUnitTestBase {
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = new Levenshtein(TRUE, $threshold);
+    $matcher = new Levenshtein(['threshold' => $threshold], 'rules_datamatcher_levenshtein', []);
+
+    $matcher->setThreshold($threshold);
+    $matcher->setCaseSensitive(TRUE);
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }
@@ -28,7 +31,10 @@ class LevenshteinTest extends RulesUnitTestBase {
    * @dataProvider caseInsensitiveMatchesProvider
    */
   public function testCaseInsensitiveMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = new Levenshtein(FALSE, $threshold);
+    $matcher = new Levenshtein(['threshold' => $threshold], 'rules_datamatcher_levenshtein', []);
+
+    $matcher->setThreshold($threshold);
+    $matcher->setCaseSensitive(FALSE);
 
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }

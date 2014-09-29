@@ -18,22 +18,16 @@ namespace Drupal\rules\Plugin\DataMatcher;
  * )
  */
 class StringContains extends DataMatcherBase {
-
-  /**
-   * @var boolean
-   */
-  private $case_sensitive;
-
   /**
    * @var int
    */
-  private $offset;
+  private $offset = 0;
 
-  public function __construct($case_sensitive = TRUE, $offset = 0) {
-    $this->validateArgumentType('case_sensitive', $case_sensitive, 'boolean');
-    $this->validateArgumentType('offset', $offset, 'integer');
-
-    $this->case_sensitive = $case_sensitive;
+  /**
+   *
+   * @param int $offset
+   */
+  public function setOffset($offset) {
     $this->offset = $offset;
   }
 
@@ -41,11 +35,6 @@ class StringContains extends DataMatcherBase {
    * {@inheritdoc}
    */
   protected function doMatch($subject, $object) {
-    if (FALSE === $this->case_sensitive) {
-      $subject = strtolower($subject);
-      $object = strtolower($object);
-    }
-
-    return false !== strpos($subject, $object, $this->offset);
+    return FALSE !== strpos($subject, $object, $this->offset);
   }
 }

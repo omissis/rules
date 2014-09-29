@@ -30,14 +30,18 @@ class Regexp extends DataMatcherBase {
   private $offset;
 
   /**
+   *
    * @param int $flags
+   */
+  public function setFlags($flags) {
+    $this->flags = $flags;
+  }
+
+  /**
+   *
    * @param int $offset
    */
-  public function __construct($flags = 0, $offset = 0) {
-    $this->validateArgumentType('flags', $flags, 'integer');
-    $this->validateArgumentType('offset', $offset, 'integer');
-
-    $this->flags = $flags;
+  public function setOffest($offset) {
     $this->offset = $offset;
   }
 

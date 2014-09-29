@@ -18,38 +18,33 @@ namespace Drupal\rules\Plugin\DataMatcher;
  * )
  */
 class Levenshtein extends DataMatcherBase {
-
-  /**
-   * @var boolean
-   */
-  private $case_sensitive;
-
-  /**
-   * @var int
-   */
   private $threshold;
 
+  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
   /**
-   * @param boolean $case_sensitive
+   * Threshold for levenstein function.
+   *
    * @param int $threshold
    */
-  public function __construct($case_sensitive = TRUE, $threshold = 1) {
-    $this->validateArgumentType('case_sensitive', $case_sensitive, 'boolean');
-    $this->validateArgumentType('threshold', $threshold, 'integer');
-
-    $this->case_sensitive = $case_sensitive;
+  public function setThreshold($threshold) {
     $this->threshold = $threshold;
+  }
+
+  /**
+   *
+   * @return int
+   */
+  protected function getThreshold() {
+    return isset($this->threshold) ? $this->threshold : 1;
   }
 
   /**
    * {@inheritdoc}
    */
   protected function doMatch($subject, $object) {
-    if (FALSE === $this->case_sensitive) {
-      $subject = strtolower($subject);
-      $object = strtolower($object);
-    }
-
-    return $this->threshold >= levenshtein($subject, $object);
+    return $this->getThreshold() >= levenshtein($subject, $object);
   }
 }

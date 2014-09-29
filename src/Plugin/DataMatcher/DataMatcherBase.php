@@ -9,20 +9,80 @@ namespace Drupal\rules\Plugin\DataMatcher;
 
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\rules\Matcher\MatcherInterface;
+use Drupal\rules\Inflector\InflectorInterface;
+use Drupal\rules\Plugin\DataInflector\Lowercase;
+use Drupal\rules\Plugin\DataInflector\Trim;
 
 /**
  * Base class for rules conditions.
  */
 abstract class DataMatcherBase extends PluginBase implements MatcherInterface {
 
+  protected $subjectInflectors = array();
+  protected $objectInflectors = array();
+
   /**
    * {@inheritdoc}
    */
   public function match($subject, $object) {
-    $this->validateArgumentType('subject', $subject, 'string');
-    $this->validateArgumentType('object', $object, 'string');
+    return $this->doMatch(
+      $this->inflect($subject, $this->subjectInflectors),
+      $this->inflect($object, $this->objectInflectors)
+    );
+  }
 
-    return $this->doMatch($subject, $object);
+  /**
+   * Set the flag for case sensitive.
+   *
+   * @todo inject Lowercase Plugin
+   * @todo move this to a StringMatcherTrait
+   *
+   * @param boolean $caseSensitive
+   */
+  public function setCaseSensitive($caseSensitive) {
+    if (TRUE === $caseSensitive) {
+      return;
+    }
+
+    $inflector = new Lowercase([], 'rules_data_inflector_lowercase', []);
+
+    $this->addSubjectInflector($inflector);
+    $this->addObjectInflector($inflector);
+  }
+
+  /**
+   * Set the flag for trim.
+   *
+   * @todo inject Lowercase Plugin
+   * @todo move this to a StringMatcherTrait
+   *
+   * @param boolean $trimmed
+   */
+  public function setTrimmed($trimmed) {
+    if (FALSE === $trimmed) {
+      return;
+    }
+
+    $inflector = new Trim([], 'rules_data_inflector_trim', []);
+
+    $this->addSubjectInflector($inflector);
+    $this->addObjectInflector($inflector);
+  }
+
+  protected function inflect($value, array $inflectors = array()) {
+    array_walk($inflectors, function ($inflector) use (&$value) {
+      $value = $inflector->inflect($value);
+    });
+
+    return $value;
+  }
+
+  protected function addSubjectInflector(InflectorInterface $inflector) {
+    $this->subjectInflectors[] = $inflector;
+  }
+
+  protected function addObjectInflector(InflectorInterface $inflector) {
+    $this->objectInflectors[] = $inflector;
   }
 
   /**
@@ -34,19 +94,5 @@ abstract class DataMatcherBase extends PluginBase implements MatcherInterface {
    * @return boolean
    */
   abstract protected function doMatch($subject, $object);
-
-
-  /**
-   * Helper function to validate arguments.
-   *
-   * @param string $name    The name of the argument
-   * @param mixed $argument The argument itself
-   * @param string $type    The type of the argument, whether a scalar type or a class' FQDN
-   */
-  protected function validateArgumentType($name, $argument, $type) {
-    if ($type !== gettype($argument)) {
-      throw new \InvalidArgumentException('Argument "$' . $name . '" must be a ' . $type . '.');
-    }
-  }
 
 }

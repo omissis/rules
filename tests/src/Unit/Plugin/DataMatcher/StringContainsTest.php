@@ -19,7 +19,10 @@ class StringContainsTest extends RulesUnitTestBase {
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new StringContains();
+    $matcher = new StringContains([], 'rules_datamatcher_string_contains', []);
+
+    $matcher->setCaseSensitive(TRUE);
+
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }
 
@@ -27,7 +30,10 @@ class StringContainsTest extends RulesUnitTestBase {
    * @dataProvider caseInsensitiveMatchesProvider
    */
   public function testCaseInsensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new StringContains(FALSE, 0);
+    $matcher = new StringContains([], 'rules_datamatcher_string_contains', []);
+
+    $matcher->setCaseSensitive(FALSE);
+
     $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
   }
 

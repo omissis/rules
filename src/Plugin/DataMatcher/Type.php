@@ -23,8 +23,6 @@ class Type extends DataMatcherBase {
    * {@inheritdoc}
    */
   public function match($subject, $object) {
-    $this->validateArgumentType('object', $object, 'string');
-
     return $this->doMatch($subject, $object);
   }
 
@@ -32,11 +30,11 @@ class Type extends DataMatcherBase {
    * {@inheritdoc}
    */
   protected function doMatch($subject, $object) {
-    if ($object === gettype($subject)) {
+    if (is_object($subject) && $subject instanceof $object) {
       return TRUE;
     }
 
-    if (is_object($subject) && $subject instanceof $object) {
+    if ($object === gettype($subject)) {
       return TRUE;
     }
 

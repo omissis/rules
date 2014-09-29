@@ -28,7 +28,7 @@ class TypeTest extends RulesUnitTestBase {
    */
   public function setUp() {
     parent::setUp();
-    $this->matcher = new Type();
+    $this->matcher = new Type([], 'foo_bar', []);
   }
 
   /**
