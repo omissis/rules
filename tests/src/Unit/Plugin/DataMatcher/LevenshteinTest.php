@@ -9,17 +9,19 @@ namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
 
 use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\DataMatcher\Levenshtein;
+use Drupal\rules\Plugin\RulesDataProcessor\Lowercase;
 
 /**
  * @coversDefaultClass \Drupal\rules\DataMatcher\LevenshteinMatcher
  * @group rules
  */
-class LevenshteinTest extends RulesUnitTestBase {
+class LevenshteinTest extends DataMatcherTestBase {
+
   /**
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = new Levenshtein([], 'foo_bar', []);
+    $matcher = new Levenshtein([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setThreshold($threshold);
     $matcher->setCaseSensitive(TRUE);
@@ -31,7 +33,7 @@ class LevenshteinTest extends RulesUnitTestBase {
    * @dataProvider caseInsensitiveMatchesProvider
    */
   public function testCaseInsensitiveMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = new Levenshtein([], 'foo_bar', []);
+    $matcher = new Levenshtein([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setThreshold($threshold);
     $matcher->setCaseSensitive(FALSE);

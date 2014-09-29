@@ -378,4 +378,20 @@ abstract class RulesUnitTestBase extends UnitTestCase {
     return $this;
   }
 
+  /**
+   * A callback is built and linked to the mocked method.
+   *
+   * @link http://www.giorgiosironi.com/2010/03/clever-mock-objects-with-phpunit.html
+   */
+  public function setMultipleMatching($expectation, array $inputs, array $outputs) {
+    $testCase = $this;
+    $callback = function() use ($inputs, $outputs, $testCase) {
+      $args = func_get_args();
+      $testCase->assertContains($args[0], $inputs);
+      $index = array_search($args[0], $inputs);
+      return $outputs[$index];
+    };
+    $expectation->will($this->returnCallback($callback));
+  }
+
 }

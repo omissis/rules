@@ -99,7 +99,7 @@ abstract class RulesIntegrationTestBase extends RulesUnitTestBase {
     $container->set('plugin.manager.action', $this->actionManager);
     $container->set('plugin.manager.condition', $this->conditionManager);
     $container->set('plugin.manager.rules_expression', $this->rulesExpressionManager);
-    $container->set('plugin.manager.rules_data_processor', $this->rulesExpressionManager);
+    $container->set('plugin.manager.rules_data_processor', $this->rulesDataProcessorManager);
     $container->set('plugin.manager.rules_data_matcher', $this->rulesDataMatcherManager);
     $container->set('typed_data_manager', $this->typedDataManager);
     $container->set('string_translation', $this->getStringTranslationStub());

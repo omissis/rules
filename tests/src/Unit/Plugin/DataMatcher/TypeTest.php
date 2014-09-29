@@ -7,14 +7,13 @@
 
 namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
 
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\DataMatcher\Type;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\Type
  * @group rules
  */
-class TypeTest extends RulesUnitTestBase {
+class TypeTest extends DataMatcherTestBase {
 
   /**
    * The condition to be tested.
@@ -28,7 +27,7 @@ class TypeTest extends RulesUnitTestBase {
    */
   public function setUp() {
     parent::setUp();
-    $this->matcher = new Type([], 'foo_bar', []);
+    $this->matcher = new Type([], 'foo_bar', [], $this->dataProcessorManager);
   }
 
   /**

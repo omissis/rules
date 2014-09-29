@@ -20,10 +20,6 @@ namespace Drupal\rules\Plugin\DataMatcher;
 class Levenshtein extends DataMatcherBase {
   private $threshold;
 
-  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-  }
-
   /**
    * Threshold for levenstein function.
    *

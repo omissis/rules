@@ -7,19 +7,18 @@
 
 namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
 
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\DataMatcher\StringEquals;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\StringEquals
  * @group rules
  */
-class StringEqualsTest extends RulesUnitTestBase {
+class StringEqualsTest extends DataMatcherTestBase {
   /**
    * @dataProvider matchesProvider
    */
   public function testMatch($expectedMatchResult, $trim, $case_sensitive, $subject, $object) {
-    $matcher = new StringEquals([], 'foo_bar', []);
+    $matcher = new StringEquals([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setCaseSensitive($case_sensitive);
     $matcher->setTrimmed($trim);

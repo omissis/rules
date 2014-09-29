@@ -7,19 +7,18 @@
 
 namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
 
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\DataMatcher\StringContains;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\StringContains
  * @group rules
  */
-class StringContainsTest extends RulesUnitTestBase {
+class StringContainsTest extends DataMatcherTestBase {
   /**
    * @dataProvider caseSensitiveMatchesProvider
    */
   public function testCaseSensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new StringContains([], 'foo_bar', []);
+    $matcher = new StringContains([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setCaseSensitive(TRUE);
 
@@ -30,7 +29,7 @@ class StringContainsTest extends RulesUnitTestBase {
    * @dataProvider caseInsensitiveMatchesProvider
    */
   public function testCaseInsensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = new StringContains([], 'foo_bar', []);
+    $matcher = new StringContains([], 'foo_bar', [], $this->dataProcessorManager);
 
     $matcher->setCaseSensitive(FALSE);
 

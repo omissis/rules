@@ -7,14 +7,13 @@
 
 namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
 
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\DataMatcher\Regexp;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\RegexpMatcher
  * @group rules
  */
-class RegexpTest extends RulesUnitTestBase {
+class RegexpTest extends DataMatcherTestBase {
 
   /**
    * The condition to be tested.
@@ -28,7 +27,7 @@ class RegexpTest extends RulesUnitTestBase {
    */
   public function setUp() {
     parent::setUp();
-    $this->matcher = new Regexp([], 'foo_bar', []);
+    $this->matcher = new Regexp([], 'foo_bar', [], $this->dataProcessorManager);
   }
 
   /**
