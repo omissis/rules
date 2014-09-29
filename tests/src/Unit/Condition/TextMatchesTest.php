@@ -5,11 +5,11 @@
  * Contains \Drupal\rules\Tests\Condition\DataComparisonTest.
  */
 
-namespace Drupal\rules\Tests\Condition;
+namespace Drupal\Tests\rules\Unit\Condition;
 
 use Drupal\rules\Plugin\Condition\TestMatcher;
 use Drupal\Core\Plugin\Context\ContextDefinition;
-use Drupal\rules\Tests\RulesIntegrationTestBase;
+use Drupal\Tests\rules\Unit\RulesIntegrationTestBase;
 use Drupal\rules\Plugin\DataMatcher\StringEquals;
 
 /**
@@ -40,6 +40,7 @@ class TextMatchesTest extends RulesIntegrationTestBase {
    */
   public function testSummary() {
     $this->assertEquals('Text matches', $this->condition->summary());
+    var_dump($this->rulesDataProcessorManager->getDefinitions());exit;
   }
 
   /**
@@ -49,7 +50,7 @@ class TextMatchesTest extends RulesIntegrationTestBase {
    *
    * @covers ::evaluate()
    */
-  public function testEvaluate($expectedMatchResult, $matcherClass, $text, $value) {
+  public function testEvaluate($expectedMatchResult, $matcherClass, $subject, $object) {
     $dataMatcherManager = $this->getMockBuilder('Drupal\\rules\\Plugin\\RulesDataMatcherPluginManager')
       ->disableOriginalConstructor()
       ->getMock();
@@ -61,9 +62,9 @@ class TextMatchesTest extends RulesIntegrationTestBase {
 
     $this->condition
       ->setDataMatcherManager($dataMatcherManager)
-      ->setContextValue('text', $text)
+      ->setContextValue('data', $subject)
       ->setContextValue('operator', 'foo')
-      ->setContextValue('value', $value);
+      ->setContextValue('value', $object);
 
     $this->assertSame($expectedMatchResult, $this->condition->evaluate());
   }
@@ -77,7 +78,7 @@ class TextMatchesTest extends RulesIntegrationTestBase {
    *
    * @covers ::evaluate()
    */
-  public function testEvaluateWithErrors($matcherClass, $text, $value) {
+  public function testEvaluateWithErrors($matcherClass, $subject, $object) {
     $dataMatcherManager = $this->getMockBuilder('Drupal\\rules\\Plugin\\RulesDataMatcherPluginManager')
       ->disableOriginalConstructor()
       ->getMock();
@@ -89,9 +90,9 @@ class TextMatchesTest extends RulesIntegrationTestBase {
 
     $this->condition
       ->setDataMatcherManager($dataMatcherManager)
-      ->setContextValue('text', $text)
+      ->setContextValue('data', $subject)
       ->setContextValue('operator', 'foo')
-      ->setContextValue('value', $value);
+      ->setContextValue('value', $object);
 
     $this->condition->evaluate();
   }

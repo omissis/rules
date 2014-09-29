@@ -2,12 +2,12 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Tests\Plugin\DataMatcher\RegexpTest.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\DataMatcher\RegexpTest.
  */
 
-namespace Drupal\rules\Tests\Plugin\DataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
 
-use Drupal\rules\Tests\RulesUnitTestBase;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\DataMatcher\Regexp;
 
 /**
