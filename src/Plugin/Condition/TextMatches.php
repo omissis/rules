@@ -35,8 +35,6 @@ use Drupal\rules\Plugin\RulesDataMatcherPluginManager;
  *     )
  *   }
  * )
- *
- * @todo: DataMatcherPluginManager should be constructor-injected as it's a mandatory dependency.
  */
 class TextMatches extends RulesConditionBase implements ContainerFactoryPluginInterface {
 
