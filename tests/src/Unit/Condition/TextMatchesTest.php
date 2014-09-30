@@ -60,20 +60,20 @@ class TextMatchesTest extends RulesIntegrationTestBase {
 
   public function matchesProvider() {
     return array(
-      array(TRUE, 'rules_datamatcher_levenshtein', 'foo', 'foo'),
-      array(FALSE, 'rules_datamatcher_levenshtein', 'foo', 'bar'),
+      array(TRUE, 'rules_data_matcher_levenshtein', 'foo', 'foo'),
+      array(FALSE, 'rules_data_matcher_levenshtein', 'foo', 'bar'),
 
-      array(TRUE, 'rules_datamatcher_regexp', 'foo', '/^fo/'),
-      array(FALSE, 'rules_datamatcher_regexp', 'foo', '/fu/'),
+      array(TRUE, 'rules_data_matcher_regexp', 'foo', '/^fo/'),
+      array(FALSE, 'rules_data_matcher_regexp', 'foo', '/fu/'),
 
-      array(TRUE, 'rules_datamatcher_string_contains', 'foo', 'fo'),
-      array(FALSE, 'rules_datamatcher_string_contains', 'foo', 'ba'),
+      array(TRUE, 'rules_data_matcher_string_contains', 'foo', 'fo'),
+      array(FALSE, 'rules_data_matcher_string_contains', 'foo', 'ba'),
 
-      array(TRUE, 'rules_datamatcher_string_equals', 'foo', 'foo'),
-      array(FALSE, 'rules_datamatcher_string_equals', 'foo', 'bar'),
+      array(TRUE, 'rules_data_matcher_string_equals', 'foo', 'foo'),
+      array(FALSE, 'rules_data_matcher_string_equals', 'foo', 'bar'),
 
-      array(TRUE, 'rules_datamatcher_type', 'foo', 'string'),
-      array(FALSE, 'rules_datamatcher_type', 'foo', 'boolean'),
+      array(TRUE, 'rules_data_matcher_type', 'foo', 'string'),
+      array(FALSE, 'rules_data_matcher_type', 'foo', 'boolean'),
     );
   }
 }

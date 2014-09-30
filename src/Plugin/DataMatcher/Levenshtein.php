@@ -11,7 +11,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
  * Defines a levenshtein distance matcher.
  *
  * @RulesDataMatcher(
- *   id = "rules_datamatcher_levenshtein",
+ *   id = "rules_data_matcher_levenshtein",
  *   label = @Translation("A Levenshtein distance matcher."),
  *   subject_type = "string",
  *   object_type = "string"

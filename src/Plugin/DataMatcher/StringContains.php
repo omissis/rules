@@ -11,7 +11,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
  * Defines a 'string contains' matcher.
  *
  * @RulesDataMatcher(
- *   id = "rules_datamatcher_string_contains",
+ *   id = "rules_data_matcher_string_contains",
  *   label = @Translation("A 'string contains' matcher."),
  *   subject_type = "string",
  *   object_type = "string"

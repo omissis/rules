@@ -92,7 +92,7 @@ class TextMatches extends RulesConditionBase implements ContainerFactoryPluginIn
       throw new \RuntimeException('Missing "operator" context property.');
     }
 
-    // The expected result of getCastedValue is the data matcher plugin id, e.g: rules_datamatcher_string_equals.
+    // The expected result of getCastedValue is the data matcher plugin id, e.g: rules_data_matcher_string_equals.
     // Throws PluginNotFoundException if it can't find the plugin
     $matcher = $this->dataMatcherManager->createInstance($contextData->getCastedValue());
 

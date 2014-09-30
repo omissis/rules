@@ -11,7 +11,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
  * Defines a string regular expression matcher.
  *
  * @RulesDataMatcher(
- *   id = "rules_datamatcher_regexp",
+ *   id = "rules_data_matcher_regexp",
  *   label = @Translation("A regular expression matcher."),
  *   subject_type = "string",
  *   object_type = "string"
