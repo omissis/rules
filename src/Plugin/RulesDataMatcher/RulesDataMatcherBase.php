@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\DataMatcher\DataMatcherBase.
+ * Contains \Drupal\rules\Plugin\RulesDataMatcher\RulesDataMatcherBase.
  */
 
-namespace Drupal\rules\Plugin\DataMatcher;
+namespace Drupal\rules\Plugin\RulesDataMatcher;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\PluginBase;
@@ -17,7 +17,7 @@ use Drupal\rules\Engine\RulesDataProcessorInterface;
 /**
  * Base class for rules conditions.
  */
-abstract class DataMatcherBase extends PluginBase implements ContainerFactoryPluginInterface, MatcherInterface {
+abstract class RulesDataMatcherBase extends PluginBase implements ContainerFactoryPluginInterface, MatcherInterface {
 
   protected $subjectProcessors = array();
   protected $objectProcessors = array();

@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\DataMatcher\StringEquals.
+ * Contains \Drupal\rules\Plugin\RulesDataMatcher\StringEquals.
  */
 
-namespace Drupal\rules\Plugin\DataMatcher;
+namespace Drupal\rules\Plugin\RulesDataMatcher;
 
 /**
  * Defines a strings equality matcher.
@@ -17,7 +17,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *   object_type = "string"
  * )
  */
-class StringEquals extends DataMatcherBase {
+class StringEquals extends RulesDataMatcherBase {
 
   /**
    * {@inheritdoc}

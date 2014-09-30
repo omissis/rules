@@ -2,18 +2,18 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\DataMatcher\StringEqualsTest.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\StringEqualsTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
 
-use Drupal\rules\Plugin\DataMatcher\StringEquals;
+use Drupal\rules\Plugin\RulesDataMatcher\StringEquals;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\StringEquals
+ * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\StringEquals
  * @group rules
  */
-class StringEqualsTest extends DataMatcherTestBase {
+class StringEqualsTest extends RulesDataMatcherTestBase {
   /**
    * @dataProvider matchesProvider
    */

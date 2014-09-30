@@ -68,7 +68,7 @@ abstract class RulesIntegrationTestBase extends RulesUnitTestBase {
     $container = new ContainerBuilder();
     // Register plugin managers used by Rules, but mock some unwanted
     // dependencies requiring more stuff to loaded.
-    $module_handler = $this->getMockBuilder('Drupal\Core\Extension\ModuleHandlerInterface')
+    $module_handler = $this->getMockBuilder('Drupal\\Core\\Extension\\ModuleHandlerInterface')
       ->disableOriginalConstructor()
       ->getMock();
     // Set all the modules as being existant.

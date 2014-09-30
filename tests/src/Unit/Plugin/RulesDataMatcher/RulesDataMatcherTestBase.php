@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\DataMatcher\DataMatcherTestBase.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RulesDataMatcherTestBase.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
 
 use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\RulesDataProcessor\Lowercase;
@@ -14,7 +14,7 @@ use Drupal\rules\Plugin\RulesDataProcessor\Trim;
 /**
  * @group rules
  */
-abstract class DataMatcherTestBase extends RulesUnitTestBase {
+abstract class RulesDataMatcherTestBase extends RulesUnitTestBase {
 
   public function setUp() {
     parent::setUp();

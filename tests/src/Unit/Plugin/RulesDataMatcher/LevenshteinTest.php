@@ -2,20 +2,20 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\DataMatcher\LevenshteinTest.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\LevenshteinTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
 
 use Drupal\Tests\rules\Unit\RulesUnitTestBase;
-use Drupal\rules\Plugin\DataMatcher\Levenshtein;
+use Drupal\rules\Plugin\RulesDataMatcher\Levenshtein;
 use Drupal\rules\Plugin\RulesDataProcessor\Lowercase;
 
 /**
- * @coversDefaultClass \Drupal\rules\DataMatcher\LevenshteinMatcher
+ * @coversDefaultClass \Drupal\rules\RulesDataMatcher\LevenshteinMatcher
  * @group rules
  */
-class LevenshteinTest extends DataMatcherTestBase {
+class LevenshteinTest extends RulesDataMatcherTestBase {
 
   /**
    * @dataProvider caseSensitiveMatchesProvider

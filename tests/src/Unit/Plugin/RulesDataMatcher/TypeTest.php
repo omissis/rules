@@ -2,23 +2,23 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\DataMatcher\TypeTest.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\TypeTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
 
-use Drupal\rules\Plugin\DataMatcher\Type;
+use Drupal\rules\Plugin\RulesDataMatcher\Type;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\Type
+ * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\Type
  * @group rules
  */
-class TypeTest extends DataMatcherTestBase {
+class TypeTest extends RulesDataMatcherTestBase {
 
   /**
    * The condition to be tested.
    *
-   * @var \Drupal\rules\Plugin\DataMatcher\MatcherInterface
+   * @var \Drupal\rules\Plugin\RulesDataMatcher\MatcherInterface
    */
   protected $matcher;
 

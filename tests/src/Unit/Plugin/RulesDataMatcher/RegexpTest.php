@@ -2,23 +2,23 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\DataMatcher\RegexpTest.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\RegexpTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
 
-use Drupal\rules\Plugin\DataMatcher\Regexp;
+use Drupal\rules\Plugin\RulesDataMatcher\Regexp;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\RegexpMatcher
+ * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\RegexpMatcher
  * @group rules
  */
-class RegexpTest extends DataMatcherTestBase {
+class RegexpTest extends RulesDataMatcherTestBase {
 
   /**
    * The condition to be tested.
    *
-   * @var \Drupal\rules\Plugin\DataMatcher\MatcherInterface
+   * @var \Drupal\rules\Plugin\RulesDataMatcher\MatcherInterface
    */
   protected $matcher;
 

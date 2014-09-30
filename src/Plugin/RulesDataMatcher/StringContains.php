@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\DataMatcher\StringContains.
+ * Contains \Drupal\rules\Plugin\RulesDataMatcher\StringContains.
  */
 
-namespace Drupal\rules\Plugin\DataMatcher;
+namespace Drupal\rules\Plugin\RulesDataMatcher;
 
 /**
  * Defines a 'string contains' matcher.
@@ -17,7 +17,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *   object_type = "string"
  * )
  */
-class StringContains extends DataMatcherBase {
+class StringContains extends RulesDataMatcherBase {
   /**
    * @var int
    */

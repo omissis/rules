@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\DataMatcher\Levenshtein.
+ * Contains \Drupal\rules\Plugin\RulesDataMatcher\Levenshtein.
  */
 
-namespace Drupal\rules\Plugin\DataMatcher;
+namespace Drupal\rules\Plugin\RulesDataMatcher;
 
 /**
  * Defines a levenshtein distance matcher.
@@ -17,7 +17,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *   object_type = "string"
  * )
  */
-class Levenshtein extends DataMatcherBase {
+class Levenshtein extends RulesDataMatcherBase {
   private $threshold;
 
   /**

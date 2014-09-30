@@ -2,18 +2,18 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Plugin\DataMatcher\StringContainsTest.
+ * Contains \Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher\StringContainsTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Plugin\DataMatcher;
+namespace Drupal\Tests\rules\Unit\Plugin\RulesDataMatcher;
 
-use Drupal\rules\Plugin\DataMatcher\StringContains;
+use Drupal\rules\Plugin\RulesDataMatcher\StringContains;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\DataMatcher\StringContains
+ * @coversDefaultClass \Drupal\rules\Plugin\RulesDataMatcher\StringContains
  * @group rules
  */
-class StringContainsTest extends DataMatcherTestBase {
+class StringContainsTest extends RulesDataMatcherTestBase {
   /**
    * @dataProvider caseSensitiveMatchesProvider
    */

@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\DataMatcher\Type.
+ * Contains \Drupal\rules\Plugin\RulesDataMatcher\Type.
  */
 
-namespace Drupal\rules\Plugin\DataMatcher;
+namespace Drupal\rules\Plugin\RulesDataMatcher;
 
 /**
  * Defines a type matcher.
@@ -17,7 +17,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *   object_type = "string"
  * )
  */
-class Type extends DataMatcherBase {
+class Type extends RulesDataMatcherBase {
 
   /**
    * {@inheritdoc}

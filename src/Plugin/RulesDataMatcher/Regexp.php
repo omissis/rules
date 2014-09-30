@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\rules\Plugin\DataMatcher\Regexp.
+ * Contains \Drupal\rules\Plugin\RulesDataMatcher\Regexp.
  */
 
-namespace Drupal\rules\Plugin\DataMatcher;
+namespace Drupal\rules\Plugin\RulesDataMatcher;
 
 /**
  * Defines a string regular expression matcher.
@@ -17,7 +17,7 @@ namespace Drupal\rules\Plugin\DataMatcher;
  *   object_type = "string"
  * )
  */
-class Regexp extends DataMatcherBase {
+class Regexp extends RulesDataMatcherBase {
 
   /**
    * @var int
