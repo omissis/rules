@@ -22,13 +22,6 @@ class Type extends RulesDataMatcherBase {
   /**
    * {@inheritdoc}
    */
-  public function match($subject, $object) {
-    return $this->doMatch($subject, $object);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   protected function doMatch($subject, $object) {
     if (is_object($subject) && $subject instanceof $object) {
       return TRUE;
