@@ -27,13 +27,12 @@ abstract class RulesEntityIntegrationTestCase extends RulesIntegrationTestCase {
    * {@inheritdoc}
    */
   public function setUp() {
-    $this->extraNamespaces += array(
+    $this->enableModule('entity_test', [
       // Register entity plugins.
       'Drupal\\Core\\Entity' => DRUPAL_ROOT . '/core/lib/Drupal/Core/Entity',
       // Add entity test entity types.
       'Drupal\\entity_test' => DRUPAL_ROOT . '/core/modules/system/tests/modules/entity_test/src',
-    );
-    $this->enabledModules['entity_test'] = TRUE;
+    ]);
 
     parent::setup();
 

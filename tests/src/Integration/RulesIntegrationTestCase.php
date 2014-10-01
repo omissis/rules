@@ -149,21 +149,16 @@ abstract class RulesIntegrationTestCase extends RulesUnitTestCase {
    * Fakes the enabling of a module and loads its namespace.
    *
    * @param string $name the name of the module
+   * @param array $namespaces map of the association between namespaces and filesystem paths.
    */
-  public function enableModule($name, $namespace = NULL, $path = NULL) {
+  public function enableModule($name, array $namespaces = []) {
     $this->enabledModules[$name] = TRUE;
 
-    if (empty($namespace)) {
-        $namespace = 'Drupal\\' . $name;
+    if (empty($namespaces)) {
+        $namespaces = array('Drupal\\' . $name => DRUPAL_ROOT . '/core/modules/' . $name . '/src');
     }
 
-    if (empty($path)) {
-        $path = DRUPAL_ROOT . '/core/modules/' . $name . '/src';
-    }
-
-    $this->extraNamespaces += array(
-      $namespace => $path,
-    );
+    $this->extraNamespaces += $namespaces;
   }
 
   /**
