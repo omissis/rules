@@ -14,7 +14,7 @@ use Drupal\rules\Plugin\RulesExpression\RulesAction;
  *
  * @group rules
  */
-class AutoSaveTest extends RulesUnitTestBase {
+class AutoSaveTest extends RulesUnitTestCase {
 
   /**
    * Tests auto saving after an action execution.

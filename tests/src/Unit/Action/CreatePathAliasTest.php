@@ -10,13 +10,13 @@ namespace Drupal\Tests\rules\Unit\Action;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Action\CreatePathAlias;
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
+use Drupal\Tests\rules\Unit\RulesUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Action\CreatePathAlias
  * @group rules_action
  */
-class CreatePathAliasTest extends RulesUnitTestBase {
+class CreatePathAliasTest extends RulesUnitTestCase {
 
   /**
    * The action to be tested.

@@ -13,7 +13,7 @@ use Drupal\rules\Plugin\RulesExpression\ActionSet;
  * @coversDefaultClass \Drupal\rules\Plugin\RulesExpression\ActionSet
  * @group rules
  */
-class ActionSetTest extends RulesUnitTestBase {
+class ActionSetTest extends RulesUnitTestCase {
 
   /**
    * The action set being tested.

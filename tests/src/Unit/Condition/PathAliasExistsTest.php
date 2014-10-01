@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Unit\Condition;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Condition\PathAliasExists;
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
+use Drupal\Tests\rules\Unit\RulesUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\PathAliasExists
  * @group rules_conditions
  */
-class PathAliasExistsTest extends RulesUnitTestBase {
+class PathAliasExistsTest extends RulesUnitTestCase {
 
   /**
    * The condition to be tested.

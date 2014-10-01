@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Unit\Action;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Action\AliasDelete;
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
+use Drupal\Tests\rules\Unit\RulesUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Action\AliasDelete
  * @group rules_action
  */
-class AliasDeleteTest extends RulesUnitTestBase {
+class AliasDeleteTest extends RulesUnitTestCase {
 
   /**
    * The action to be tested.

@@ -13,7 +13,7 @@ use Drupal\rules\Plugin\RulesExpression\RulesOr;
  * @coversDefaultClass \Drupal\rules\Plugin\RulesExpression\RulesOr
  * @group rules
  */
-class RulesOrTest extends RulesUnitTestBase {
+class RulesOrTest extends RulesUnitTestCase {
 
   /**
    * The 'or' condition container being tested.

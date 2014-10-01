@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Unit\Action;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Action\SaveEntity;
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
+use Drupal\Tests\rules\Unit\RulesUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Action\SaveEntity
  * @group rules_action
  */
-class SaveEntityTest extends RulesUnitTestBase {
+class SaveEntityTest extends RulesUnitTestCase {
 
   /**
    * The action to be tested.

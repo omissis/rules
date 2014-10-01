@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Unit\Action;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Action\CreateNodePathAlias;
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
+use Drupal\Tests\rules\Unit\RulesUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Action\CreateNodePathAlias
  * @group rules_actions
  */
-class CreateNodePathAliasTest extends RulesUnitTestBase {
+class CreateNodePathAliasTest extends RulesUnitTestCase {
 
   /**
    * The action to be tested.

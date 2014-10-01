@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Unit\Action;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Action\DeleteEntity;
-use Drupal\Tests\rules\Unit\RulesUnitTestBase;
+use Drupal\Tests\rules\Unit\RulesUnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Action\DeleteEntity
  * @group rules_action
  */
-class DeleteEntityTest extends RulesUnitTestBase {
+class DeleteEntityTest extends RulesUnitTestCase {
 
   /**
    * The action to be tested.
