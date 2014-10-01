@@ -151,7 +151,7 @@ abstract class RulesIntegrationTestCase extends RulesUnitTestCase {
    * @param string $name the name of the module
    * @param array $namespaces map of the association between namespaces and filesystem paths.
    */
-  public function enableModule($name, array $namespaces = []) {
+  protected function enableModule($name, array $namespaces = []) {
     $this->enabledModules[$name] = TRUE;
 
     if (empty($namespaces)) {
