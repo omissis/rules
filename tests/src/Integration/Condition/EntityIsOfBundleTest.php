@@ -5,17 +5,17 @@
  * Contains \Drupal\Tests\rules\Unit\Condition\EntityIsOfBundleTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Condition;
+namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Condition\EntityIsOfBundle;
-use Drupal\Tests\rules\Unit\RulesUnitTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\EntityIsOfBundle
  * @group rules_conditions
  */
-class EntityIsOfBundleTest extends RulesUnitTestCase {
+class EntityIsOfBundleTest extends RulesIntegrationTestCase {
 
   /**
    * The condition to be tested.
@@ -30,13 +30,7 @@ class EntityIsOfBundleTest extends RulesUnitTestCase {
   public function setUp() {
     parent::setUp();
 
-    $this->condition = new EntityIsOfBundle([], '', ['context' => [
-      'entity' => new ContextDefinition('entity'),
-      'type' => new ContextDefinition('string'),
-      'bundle' => new ContextDefinition('string'),
-    ]]);
-
-    $this->condition->setStringTranslation($this->getMockStringTranslation());
+    $this->condition = $this->conditionManager->createInstance('rules_entity_is_of_bundle');
   }
 
   /**
