@@ -27,6 +27,7 @@ class DataIsEmptyTest extends RulesIntegrationTestCase {
    */
   public function setUp() {
     parent::setUp();
+
     $this->condition = $this->conditionManager->createInstance('rules_data_is_empty');
   }
 

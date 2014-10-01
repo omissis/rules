@@ -28,6 +28,7 @@ class ListContainsTest extends RulesIntegrationTestCase {
    */
   public function setUp() {
     parent::setUp();
+
     $this->condition = $this->conditionManager->createInstance('rules_list_contains');
   }
 

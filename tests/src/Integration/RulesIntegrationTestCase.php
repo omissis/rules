@@ -8,6 +8,7 @@
 namespace Drupal\Tests\rules\Integration;
 
 use Drupal\Core\Action\ActionManager;
+use Drupal\Core\Path\AliasManager;
 use Drupal\Core\Cache\NullBackend;
 use Drupal\Core\Condition\ConditionManager;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
@@ -35,6 +36,11 @@ abstract class RulesIntegrationTestCase extends RulesUnitTestCase {
    * @var \Drupal\Core\Action\ActionManager
    */
   protected $actionManager;
+
+  /**
+   * @var \Drupal\Core\Path\AliasManager
+   */
+  protected $aliasManager;
 
   /**
    * @var \Drupal\Core\Condition\ConditionManager
@@ -123,6 +129,11 @@ abstract class RulesIntegrationTestCase extends RulesUnitTestCase {
     $this->typedDataManager = new TypedDataManager($this->namespaces, $this->cacheBackend, $this->moduleHandler);
     $this->rulesDataProcessorManager = new RulesDataProcessorManager($this->namespaces, $this->moduleHandler);
 
+    $this->aliasManager = $this->getMockBuilder('Drupal\Core\Path\AliasManagerInterface')
+      ->disableOriginalConstructor()
+      ->getMock();
+
+    $container->set('path.alias_manager', $this->aliasManager);
     $container->set('plugin.manager.action', $this->actionManager);
     $container->set('plugin.manager.condition', $this->conditionManager);
     $container->set('plugin.manager.rules_expression', $this->rulesExpressionManager);
@@ -132,6 +143,27 @@ abstract class RulesIntegrationTestCase extends RulesUnitTestCase {
 
     \Drupal::setContainer($container);
     $this->container = $container;
+  }
+
+  /**
+   * Fakes the enabling of a module and loads its namespace.
+   *
+   * @param string $name the name of the module
+   */
+  public function enableModule($name, $namespace = NULL, $path = NULL) {
+    $this->enabledModules[$name] = TRUE;
+
+    if (empty($namespace)) {
+        $namespace = 'Drupal\\' . $name;
+    }
+
+    if (empty($path)) {
+        $path = DRUPAL_ROOT . '/core/modules/' . $name . '/src';
+    }
+
+    $this->extraNamespaces += array(
+      $namespace => $path,
+    );
   }
 
   /**

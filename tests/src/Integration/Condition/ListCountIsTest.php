@@ -2,20 +2,20 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Condition\ListCountIsTest.
+ * Contains \Drupal\Tests\rules\Integration\Condition\ListCountIsTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Condition;
+namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\rules\Plugin\Condition\ListCountIs;
 use Drupal\Core\Plugin\Context\ContextDefinition;
-use Drupal\Tests\rules\Unit\RulesUnitTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\ListCountIs
  * @group rules_conditions
  */
-class ListCountIsTest extends RulesUnitTestCase {
+class ListCountIsTest extends RulesIntegrationTestCase {
 
   /**
    * The condition to be tested.
@@ -30,13 +30,7 @@ class ListCountIsTest extends RulesUnitTestCase {
   public function setUp() {
     parent::setUp();
 
-    $this->condition = new ListCountIs([], '', ['context' => [
-      'list' => new ContextDefinition('list'),
-      'operator' => new ContextDefinition('string'),
-      'value' => new ContextDefinition('integer'),
-    ]]);
-
-    $this->condition->setStringTranslation($this->getMockStringTranslation());
+    $this->condition = $this->conditionManager->createInstance('rules_list_count_is');
   }
 
   /**

@@ -26,11 +26,10 @@ class UserHasRoleTest extends RulesEntityIntegrationTestCase {
    * {@inheritdoc}
    */
   public function setUp() {
-    $this->enabledModules['user'] = TRUE;
-    $this->extraNamespaces += array(
-      'Drupal\\user' => DRUPAL_ROOT . '/core/modules/user/src',
-    );
+    $this->enableModule('user');
+
     parent::setUp();
+
     $this->condition = $this->conditionManager->createInstance('rules_user_has_role');
   }
 

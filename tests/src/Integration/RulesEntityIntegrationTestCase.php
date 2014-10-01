@@ -7,8 +7,6 @@
 
 namespace Drupal\Tests\rules\Integration;
 
-use Drupal\Core\Entity\EntityManager;
-
 require_once DRUPAL_ROOT . '/core/includes/entity.inc';
 
 /**
@@ -47,16 +45,27 @@ abstract class RulesEntityIntegrationTestCase extends RulesIntegrationTestCase {
       ->method('getLanguages')
       ->will($this->returnValue(array('en' => (object) array('id' => 'en'))));
 
-    $this->entityManager = new EntityManager(
-      $this->namespaces,
-      $this->moduleHandler,
-      $this->cacheBackend,
-      $language_manager,
-      $this->getStringTranslationStub(),
-      $this->getClassResolverStub(),
-      $this->typedDataManager,
-      $this->getMock('Drupal\Core\KeyValueStore\KeyValueStoreInterface')
-    );
+    $this->entityAccess = $this->getMock('Drupal\Core\Entity\EntityAccessControlHandlerInterface');
+
+    $this->entityManager = $this->getMockBuilder('Drupal\Core\Entity\EntityManager')
+      ->setMethods(['getAccessControlHandler'])
+      ->setConstructorArgs([
+        $this->namespaces,
+        $this->moduleHandler,
+        $this->cacheBackend,
+        $language_manager,
+        $this->getStringTranslationStub(),
+        $this->getClassResolverStub(),
+        $this->typedDataManager,
+        $this->getMock('Drupal\Core\KeyValueStore\KeyValueStoreInterface'),
+      ])
+      ->getMock();
+
+    $this->entityManager->expects($this->any())
+      ->method('getAccessControlHandler')
+      ->with($this->anything())
+      ->will($this->returnValue($this->entityAccess));
+
     $this->container->set('entity.manager', $this->entityManager);
 
     $this->moduleHandler->expects($this->any())

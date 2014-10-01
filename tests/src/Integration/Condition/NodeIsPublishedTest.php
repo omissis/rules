@@ -2,20 +2,20 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Condition\NodeIsStickyTest.
+ * Contains \Drupal\Tests\rules\Integration\Condition\NodeIsPublishedTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Condition;
+namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
-use Drupal\rules\Plugin\Condition\NodeIsSticky;
-use Drupal\Tests\rules\Unit\RulesUnitTestCase;
+use Drupal\rules\Plugin\Condition\NodeIsPublished;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
 
 /**
- * @coversDefaultClass \Drupal\rules\Plugin\Condition\NodeIsSticky
+ * @coversDefaultClass \Drupal\rules\Plugin\Condition\NodeIsPublished
  * @group rules_conditions
  */
-class NodeIsStickyTest extends RulesUnitTestCase {
+class NodeIsPublishedTest extends RulesIntegrationTestCase {
 
   /**
    * The condition to be tested.
@@ -30,11 +30,7 @@ class NodeIsStickyTest extends RulesUnitTestCase {
   public function setUp() {
     parent::setUp();
 
-    $this->condition = new NodeIsSticky([], '', ['context' => [
-      'node' => new ContextDefinition('entity:node'),
-    ]]);
-
-    $this->condition->setStringTranslation($this->getMockStringTranslation());
+    $this->condition = $this->conditionManager->createInstance('rules_node_is_published');
   }
 
   /**
@@ -43,7 +39,7 @@ class NodeIsStickyTest extends RulesUnitTestCase {
    * @covers ::summary()
    */
   public function testSummary() {
-    $this->assertEquals('Node is sticky', $this->condition->summary());
+    $this->assertEquals('Node is published', $this->condition->summary());
   }
 
   /**
@@ -54,11 +50,11 @@ class NodeIsStickyTest extends RulesUnitTestCase {
   public function testConditionEvaluation() {
     $node = $this->getMock('Drupal\node\NodeInterface');
     $node->expects($this->at(0))
-      ->method('isSticky')
+      ->method('isPublished')
       ->will($this->returnValue(TRUE));
 
     $node->expects($this->at(1))
-      ->method('isSticky')
+      ->method('isPublished')
       ->will($this->returnValue(FALSE));
 
     // Set the node context value.
