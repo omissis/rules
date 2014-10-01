@@ -2,16 +2,17 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\RulesIntegrationTestBase.
+ * Contains \Drupal\Tests\rules\Integration\RulesIntegrationTestBase.
  */
 
-namespace Drupal\Tests\rules\Unit;
+namespace Drupal\Tests\rules\Integration;
 
 use Drupal\Core\Action\ActionManager;
 use Drupal\Core\Cache\NullBackend;
 use Drupal\Core\Condition\ConditionManager;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\TypedData\TypedDataManager;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\RulesDataProcessorManager;
 use Drupal\rules\Plugin\RulesExpressionPluginManager;
 

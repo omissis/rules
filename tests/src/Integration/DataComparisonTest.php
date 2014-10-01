@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Condition\DataComparisonTest.
+ * Contains \Drupal\Tests\rules\Integration\Condition\DataComparisonTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Condition;
+namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\rules\Plugin\Condition\DataComparison;
 use Drupal\Core\Plugin\Context\ContextDefinition;
-use Drupal\Tests\rules\Unit\RulesIntegrationTestBase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 
 /**

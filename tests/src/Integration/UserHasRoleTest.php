@@ -2,12 +2,12 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Condition\UserHasRoleTest.
+ * Contains \Drupal\Tests\rules\Integration\Condition\UserHasRoleTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Condition;
+namespace Drupal\Tests\rules\Integration\Condition;
 
-use Drupal\Tests\rules\Unit\RulesEntityIntegrationTestBase;
+use Drupal\Tests\rules\Integration\RulesEntityIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\UserHasRole

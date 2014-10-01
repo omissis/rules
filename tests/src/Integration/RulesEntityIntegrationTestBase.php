@@ -2,10 +2,11 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\RulesEntityIntegrationTestBase.
+ * Contains \Drupal\Tests\rules\Integration\RulesEntityIntegrationTestBase.
  */
 
-namespace Drupal\Tests\rules\Unit;
+namespace Drupal\Tests\rules\Integration;
+
 use Drupal\Core\Entity\EntityManager;
 
 require_once DRUPAL_ROOT . '/core/includes/entity.inc';

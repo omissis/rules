@@ -2,12 +2,12 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Unit\Condition\DataIsEmptyTest.
+ * Contains \Drupal\Tests\rules\Integration\Condition\DataIsEmptyTest.
  */
 
-namespace Drupal\Tests\rules\Unit\Condition;
+namespace Drupal\Tests\rules\Integration\Condition;
 
-use Drupal\Tests\rules\Unit\RulesIntegrationTestBase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\DataIsEmpty
