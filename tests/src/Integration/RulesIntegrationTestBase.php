@@ -148,8 +148,12 @@ abstract class RulesIntegrationTestBase extends RulesUnitTestBase {
   /**
    * Fakes the enabling of a module and loads its namespace.
    *
-   * @param string $name the name of the module
-   * @param array $namespaces map of the association between namespaces and filesystem paths.
+   * Default behaviour works fine for core modules.
+   *
+   * @param string $name
+   *   The name of the module that's gonna be enabled.
+   * @param array $namespaces
+   *   Map of the association between module's namespaces and filesystem paths.
    */
   protected function enableModule($name, array $namespaces = []) {
     $this->enabledModules[$name] = TRUE;
