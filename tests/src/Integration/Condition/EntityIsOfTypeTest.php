@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Condition\EntityIsOfType;
-use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\EntityIsOfType
  * @group rules_conditions
  */
-class EntityIsOfTypeTest extends RulesIntegrationTestCase {
+class EntityIsOfTypeTest extends RulesIntegrationTestBase {
 
   /**
    * The condition to be tested.

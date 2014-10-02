@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Integration\RulesEntityIntegrationTestCase.
+ * Contains \Drupal\Tests\rules\Integration\RulesEntityIntegrationTestBase.
  */
 
 namespace Drupal\Tests\rules\Integration;
@@ -16,7 +16,7 @@ require_once DRUPAL_ROOT . '/core/includes/entity.inc';
  * types are registered. It enables entity_test module, such that some test
  * entity types are available.
  */
-abstract class RulesEntityIntegrationTestCase extends RulesIntegrationTestCase {
+abstract class RulesEntityIntegrationTestBase extends RulesIntegrationTestBase {
 
   /**
    * @var \Drupal\Core\Entity\EntityManagerInterface

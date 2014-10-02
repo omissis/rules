@@ -9,14 +9,14 @@ namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\rules\Plugin\Condition\DataComparison;
 use Drupal\Core\Plugin\Context\ContextDefinition;
-use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
-use Drupal\Tests\rules\Unit\RulesUnitTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\DataComparison
  * @group rules_conditions
  */
-class DataComparisonTest extends RulesIntegrationTestCase {
+class DataComparisonTest extends RulesIntegrationTestBase {
 
   /**
    * The condition to be tested.

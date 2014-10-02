@@ -8,13 +8,13 @@
 
 namespace Drupal\Tests\rules\Integration\Condition;
 
-use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\ListContains
  * @group rules_conditions
  */
-class ListContainsTest extends RulesIntegrationTestCase {
+class ListContainsTest extends RulesIntegrationTestBase {
 
   /**
    * The condition to be tested.

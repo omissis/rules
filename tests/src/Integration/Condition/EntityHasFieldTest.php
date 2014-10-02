@@ -7,13 +7,13 @@
 
 namespace Drupal\Tests\rules\Integration\Condition;
 
-use Drupal\Tests\rules\Integration\RulesEntityIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesEntityIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\EntityHasField
  * @group rules_conditions
  */
-class EntityHasFieldTest extends RulesEntityIntegrationTestCase {
+class EntityHasFieldTest extends RulesEntityIntegrationTestBase {
 
   /**
    * The condition to be tested.

@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Condition\NodeIsPromoted;
-use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\NodeIsPromoted
  * @group rules_conditions
  */
-class NodeIsPromotedTest extends RulesIntegrationTestCase {
+class NodeIsPromotedTest extends RulesIntegrationTestBase {
 
   /**
    * The condition to be tested.

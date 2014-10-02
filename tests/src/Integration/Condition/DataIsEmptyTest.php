@@ -7,13 +7,13 @@
 
 namespace Drupal\Tests\rules\Integration\Condition;
 
-use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\DataIsEmpty
  * @group rules_conditions
  */
-class DataIsEmptyTest extends RulesIntegrationTestCase {
+class DataIsEmptyTest extends RulesIntegrationTestBase {
 
   /**
    * The condition to be tested.

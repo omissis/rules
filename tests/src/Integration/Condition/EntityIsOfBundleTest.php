@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Condition\EntityIsOfBundle;
-use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\EntityIsOfBundle
  * @group rules_conditions
  */
-class EntityIsOfBundleTest extends RulesIntegrationTestCase {
+class EntityIsOfBundleTest extends RulesIntegrationTestBase {
 
   /**
    * The condition to be tested.

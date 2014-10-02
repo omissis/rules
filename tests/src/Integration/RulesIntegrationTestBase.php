@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\rules\Integration\RulesIntegrationTestCase.
+ * Contains \Drupal\Tests\rules\Integration\RulesIntegrationTestBase.
  */
 
 namespace Drupal\Tests\rules\Integration;
@@ -13,7 +13,7 @@ use Drupal\Core\Cache\NullBackend;
 use Drupal\Core\Condition\ConditionManager;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\TypedData\TypedDataManager;
-use Drupal\Tests\rules\Unit\RulesUnitTestCase;
+use Drupal\Tests\rules\Unit\RulesUnitTestBase;
 use Drupal\rules\Plugin\RulesDataProcessorManager;
 use Drupal\rules\Plugin\RulesExpressionPluginManager;
 
@@ -25,7 +25,7 @@ use Drupal\rules\Plugin\RulesExpressionPluginManager;
  * other 3rd party modules or APIs can and should be mocked; e.g. the action
  * to delete an entity would mock the call to the entity API.
  */
-abstract class RulesIntegrationTestCase extends RulesUnitTestCase {
+abstract class RulesIntegrationTestBase extends RulesUnitTestBase {
 
   /**
    * @var \Drupal\Core\TypedData\TypedDataManager

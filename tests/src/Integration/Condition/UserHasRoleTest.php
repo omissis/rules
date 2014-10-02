@@ -7,13 +7,13 @@
 
 namespace Drupal\Tests\rules\Integration\Condition;
 
-use Drupal\Tests\rules\Integration\RulesEntityIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesEntityIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\UserHasRole
  * @group rules_conditions
  */
-class UserHasRoleTest extends RulesEntityIntegrationTestCase {
+class UserHasRoleTest extends RulesEntityIntegrationTestBase {
 
   /**
    * The condition that is being tested.

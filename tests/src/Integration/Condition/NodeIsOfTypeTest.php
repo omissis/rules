@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\rules\Plugin\Condition\NodeIsOfType;
-use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\NodeIsOfType
  * @group rules_conditions
  */
-class NodeIsOfTypeTest extends RulesIntegrationTestCase {
+class NodeIsOfTypeTest extends RulesIntegrationTestBase {
 
   /**
    * The condition to be tested.

@@ -13,7 +13,7 @@ use Drupal\rules\Plugin\RulesExpression\RulesAnd;
  * @coversDefaultClass \Drupal\rules\Plugin\RulesExpression\RulesAnd
  * @group rules
  */
-class RulesAndTest extends RulesUnitTestCase {
+class RulesAndTest extends RulesUnitTestBase {
 
   /**
    * The 'and' condition container being tested.

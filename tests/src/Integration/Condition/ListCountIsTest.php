@@ -9,13 +9,13 @@ namespace Drupal\Tests\rules\Integration\Condition;
 
 use Drupal\rules\Plugin\Condition\ListCountIs;
 use Drupal\Core\Plugin\Context\ContextDefinition;
-use Drupal\Tests\rules\Integration\RulesIntegrationTestCase;
+use Drupal\Tests\rules\Integration\RulesIntegrationTestBase;
 
 /**
  * @coversDefaultClass \Drupal\rules\Plugin\Condition\ListCountIs
  * @group rules_conditions
  */
-class ListCountIsTest extends RulesIntegrationTestCase {
+class ListCountIsTest extends RulesIntegrationTestBase {
 
   /**
    * The condition to be tested.
